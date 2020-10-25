@@ -4,3 +4,11 @@
 
 /.vs/Advertises
 /obj/**
+.idea
+/.idea
+debug
+/debug
+bin
+/bin
+Migrations
+/Migrations

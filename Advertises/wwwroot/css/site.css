@@ -75,3 +75,26 @@
 .aaa {
     color: #B98A56;
 }
+.advertise-main {
+    width: 100%;
+    border-color: darkred;
+    height: 90%;
+}
+
+.advertise-child {
+    width: 40%;
+    border-color: black;
+    float: right;
+    height: 100px;
+    padding-right: 3%;
+    border-style: solid;
+}
+
+.advertise-broder {
+    width: 80px;
+    border-color: black;
+    float: right;
+    height: 100px;
+    padding-right:10px;
+    border-style: solid;
+}

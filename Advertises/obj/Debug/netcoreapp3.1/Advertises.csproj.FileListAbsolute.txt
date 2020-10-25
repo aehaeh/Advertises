@@ -305,3 +305,4 @@ D:\Users\hamed\source\repos\Advertises\Advertises\obj\Debug\netcoreapp3.1\Advert
 D:\Users\hamed\source\repos\Advertises\Advertises\obj\Debug\netcoreapp3.1\Advertises.csproj.CopyComplete
 D:\Users\hamed\source\repos\Advertises\Advertises\obj\Debug\netcoreapp3.1\Advertises.dll
 D:\Users\hamed\source\repos\Advertises\Advertises\obj\Debug\netcoreapp3.1\Advertises.pdb
+D:\Users\hamed\source\repos\Advertises\Advertises\obj\Debug\netcoreapp3.1\Advertises.csprojAssemblyReference.cache

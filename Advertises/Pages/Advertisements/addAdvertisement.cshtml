@@ -1,0 +1,46 @@
+﻿@page
+@model Advertises.addAdvertisementModel
+@{
+    ViewData["Title"] = "addAdvertisement";
+    Layout = "~/Pages/Account/_Layout.cshtml";
+}
+
+<h1>addAdvertisement</h1>
+<div class="row">
+    <div class="col-5">
+        <form method="post">
+            <div>
+                <input type="text" asp-for="MyAdvertisement.Title"   placeholder="نام کالا" />
+            </div>
+            
+            <div>
+                <textarea asp-for="MyAdvertisement.Description">
+                    
+                </textarea>
+
+
+            </div>
+
+            <div>
+               <input type="number" asp-for="MyAdvertisement.price"/>
+
+            </div>
+            <div>
+                <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.CategoryId"></select>
+            </div>
+            <div>
+                <button type="submit">
+                    درج آگهی
+
+                </button>
+
+            </div>
+            <div>
+               
+
+            </div>
+
+        </form>
+    </div>
+
+</div>

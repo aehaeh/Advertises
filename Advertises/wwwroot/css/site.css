@@ -1,0 +1,77 @@
+﻿body {
+    background-color: white;
+    direction: rtl;
+    font-family: "B Nazanin";
+    //font-size:10px;
+}
+
+* {
+    font-family: "B Nazanin";
+}
+
+
+
+#input1 {
+    margin-top: 10%;
+}
+
+#input2 {
+    margin-top: 5%;
+}
+
+#input3 {
+    margin-top: 5%;
+}
+
+#input4 {
+    margin-top: 5%;
+}
+
+#input5 {
+    margin-top: 5%;
+}
+
+#lable1 {
+    text-align: center;
+    position:;
+    margin-top: 10%;
+    Border-radius: 10px;
+    position: fixed;
+    border-color: silver;
+}
+
+.in {
+    text-align: center;
+    position:;
+    height: 30px;
+    width: 200px;
+    Border-radius: 10px;
+    border-color: silver;
+}
+
+#b1 {
+    text-align: center;
+    position:;
+    margin-top: 12%;
+    Border-radius: 10px;
+    font-size: 30px;
+    background-color: #B98A56;
+    width: 250px;
+    height: 50px;
+    color: white;
+}
+
+.img {
+    width: 100px;
+    text-align: center;
+}
+
+
+
+#p1 {
+    display: inline-table;
+}
+
+.aaa {
+    color: #B98A56;
+}

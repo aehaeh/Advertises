@@ -1,0 +1,65 @@
+﻿@page
+@model Advertises.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Pages/Account/_Layout.cshtml";
+}
+
+<h1>ثبت نام</h1>
+
+<form method="post">
+
+    <div>
+        <div>
+            <label asp-for="MyUser.UserName">
+
+            </label>
+            <input type="text" asp-for="MyUser.UserName" placeholder="نام کاربری" text-align="center" id="input1" />
+        </div>
+        <div>
+
+            <input type="text" asp-for="MyUser.FirstName" placeholder ="نام  " text-align="center" id="input1" />
+        </div>
+        <div>
+
+            <input type="text" asp-for="MyUser.LasttName" placeholder=" نام خانوادگی " text-align="center" id="input1" />
+        </div>
+
+        <div>
+            <input type="number" asp-for="MyUser.PhoneNumber" placeholder="شماره تلفن" text-align=center id="input2" ; />
+        </div>
+
+        <div>
+            <input type="password" asp-for="MyUser.Password" placeholder="رمز عبور" text-align=center id="input3" ; />
+        </div>
+
+        <div>
+            <input type="password" placeholder="تکرار رمز عبور" text-align=center id="input3" ; />
+        </div>
+
+       
+
+    </div>
+
+   
+   
+    
+
+   
+   
+
+
+   
+    <div>
+        <button type="submit" id="b1"> ثبت نام</button>
+    </div>
+
+
+
+
+    <div>
+        <p id="p1">قبلا ثبت نام کرده اید .</p>
+
+        <a class="aaa" href="https://GOOGLE.COM">وارد شوید</a>
+    </div>
+</form>

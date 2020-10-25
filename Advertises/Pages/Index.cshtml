@@ -1,0 +1,140 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    لیست آگهی ها
+</div>
+<h1 class="browse__headline">آگهی‌های خرید، فروش نو و دست دوم و کارکرده، استخدام و خدمات</h1>
+
+<div class="container-fluid badge-dark" dir="rtl" >
+    <div class="post-list-grid virtual-infinite-scroll" style="top: 200px">
+        <div class="virtual-infinite-scroll__viewportr" style="top: 250px; position: absolute; height: 100%; width: 100%;">
+            <div class="browse-post-list" style="padding-top: 0px; padding-bottom: 0px;">
+                <div class="kt-col-6 kt-col-xxl-4 post-card-item">
+                    <a class="kt-post-card kt-post-card--outlined kt-post-card--bordered" href="">
+                        <div class="kt-post-card__body">
+                            <div class="kt-post-card__title">
+                            </div>
+                            <div class="kt-post-card__bottom">
+
+                                <span class="kt-icon kt-icon-chat-bubble kt-post-card__chat-icon"></span>
+
+                            </div>
+                        </div>
+                        <div class="kt-post-card__image-wrapper">
+                           
+                        </div>
+                    </a>
+                </div>
+                <div class="kt-col-6 kt-col-xxl-4 post-card-item float-right badge-danger " style="padding-right:50px" ;>
+                    <div class="kt-post-card__body">
+                        <div class="kt-post-card__title">@Model.Advertisements[0].Title</div>
+                        <div class="text-right">
+
+
+
+                            @foreach (var item in Model.Advertisements)
+                            {
+
+                                <div>
+                                    <span>
+                                        @item.Title
+                                    </span>                                    
+                                    <span>
+                                        @item.Description
+                                    </span>
+                                    <span>
+                                        @item.price
+                                    </span>
+                                </div>
+
+                            }
+
+
+
+
+
+
+                        </div>
+                        <div class="kt-post-card__image-wrapper">
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="kt-col-6 kt-col-xxl-4 post-card-item float-right border-dark " style="padding-right:50px" ;>
+                    <div class="kt-post-card__body">
+                        <div class="kt-post-card__title">@Model.Advertisements[0].Description</div>
+                        <div class="text-right">
+
+
+
+                            @foreach (var item in Model.Advertisements)
+                            {
+
+                                <div>
+                                    <span>
+                                        @item.Description
+                                    </span>
+
+                                </div>
+
+                            }
+
+
+
+
+
+
+                        </div>
+                        <div class="kt-post-card__image-wrapper">
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="kt-col-6 kt-col-xxl-4 post-card-item float-right badge-dark " style="padding-right:50px" ;>
+                    <div class="kt-post-card__body">
+                        <div class="kt-post-card__title">@Model.Advertisements[0].price</div>
+                        <div class="text-right ">
+
+
+
+                            @foreach (var item in Model.Advertisements)
+                            {
+
+                                <div>
+                                    <span>
+                                        @item.price
+                                    </span>
+
+                                </div>
+
+                            }
+
+
+
+
+
+
+                        </div>
+                        <div class="kt-post-card__image-wrapper">
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

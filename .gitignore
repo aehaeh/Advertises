@@ -4,6 +4,8 @@
 
 /.vs/Advertises
 /obj/**
+obj
+/obj
 .idea
 /.idea
 debug

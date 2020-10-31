@@ -14,32 +14,38 @@
 <div class="container-fluid text-right" dir="rtl">
     <div class="advertise-main">
 
-        <div class="advertise-child">
-            fghdfghfhgfdghfghfghfghf
+        <div class="advertise-child ">
+            @Model.Advertisements[0].Title
+            @foreach (var item in Model.Advertisements)
+            {
 
-            <div class="advertise-child">
-               <img src="download.jpg" />
+            <div class="advertise-broder">
+
+                <div class="test-image">
+                    <img class="image-size" src="~/download.png" />
+                </div>
+
+                <div class="test">
+                    @item.Title
+                </div>
+
+
+
+                <div class="test">
+                    @item.Description
+
+                </div>
+                <div class="test">
+                    @item.price
+                </div>
 
 
             </div>
+
+            }
         </div>
-        <div class="advertise-child ">
-            fghdfghfhgfdghfghfghfghf
-            fghdfghfhgfdghfghfghfghf
-
-        </div>
-
-        <div class="advertise-child ">
-            fghdfghfhgfdghfghfghfghf
-            fghdfghfhgfdghfghfghfghf
-            fghdfghfhgfdghfghfghfghf
-
-        </div><div class="advertise-child ">
-            fghdfghfhgfdghfghfghfghf
-            fghdfghfhgfdghfghfghfghf
-            fghdfghfhgfdghfghfghfghf
-
-        </div>
+           
+           
     </div>
 </div>
 

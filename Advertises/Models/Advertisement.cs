@@ -48,6 +48,12 @@ namespace Advertises.Models
             get;
         }
 
+        public bool IsActive
+        {
+            set;
+            get;
+
+        }
 
     }
 

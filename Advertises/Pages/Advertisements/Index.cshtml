@@ -1,5 +1,5 @@
 ﻿@page
-@model Advertises.Pages.Categories.IndexModel
+@model Advertises.Pages.Advertisements.IndexModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Account/_Layout.cshtml";
@@ -7,25 +7,37 @@
 
 <h1>Index</h1>
 <p>
-    <a asp-page="Add">Create New</a>
+    <a asp-page="addAdvertisement">Create New</a>
 </p>
 <body>
+
+    @if (Model.Advrtiseslist?.Count > 0){
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Categories[0].Title)
+                    @Html.DisplayNameFor(model => model.Advrtiseslist[0].Title)
                 </th>
+                <th> @Html.DisplayNameFor(model => model.Advrtiseslist[0].price)</th>
+                <th> @Html.DisplayNameFor(model => model.Advrtiseslist[0].Description)</th>
+                
 
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Categories)
+            @foreach (var item in Model.Advrtiseslist)
             {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
                     </td>
 
                     <td>
@@ -42,9 +54,12 @@
 
 
     </table>
+    }
+    
     <div>
         <div>
-       
+
         </div>
     </div>
 </body>
+

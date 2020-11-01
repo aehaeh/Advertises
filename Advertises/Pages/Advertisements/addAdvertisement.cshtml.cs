@@ -49,6 +49,7 @@ namespace Advertises
         public void OnPost()
         {
             MyAdvertisement.CreateDate = DateTime.Now;
+            MyAdvertisement.IsActive = false;
             _context.Advertisements.Add(MyAdvertisement);
             _context.SaveChanges();
 

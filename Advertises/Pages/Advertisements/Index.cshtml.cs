@@ -6,34 +6,29 @@ using Advertises.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Advertises.Pages.Categories
+namespace Advertises.Pages.Advertisements
 {
     public class IndexModel : PageModel
-       
     {
-       private ApplicationDbContext _context;
+        private ApplicationDbContext _context;
 
         public IndexModel(ApplicationDbContext context)
         {
             _context = context;
         }
-        [BindProperty]
-        public IList<Category> Categories 
+        public IList<Advertisement> Advrtiseslist
         {
             get;
-            set; 
+            set;
         }
-
         public void OnGet()
         {
-            Categories = _context.Categories.ToList();
-                
+            Advrtiseslist = _context.Advertisements.OrderByDescending(x=>x.CreateDate).ToList()
+                ;
         }
-
-       
         public void OnPost()
         {
-            
+
         }
     }
 }

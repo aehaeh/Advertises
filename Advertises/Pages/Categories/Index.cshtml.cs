@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Advertises.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Advertises.Pages.Categories
 {
@@ -23,17 +24,26 @@ namespace Advertises.Pages.Categories
             get;
             set; 
         }
+        [BindProperty]
+        public string Mysearch
+        {
+            set;
+            get;
+
+        }
+        public DbSet<Advertisement> Advertisementlist { get; private set; }
 
         public void OnGet()
         {
             Categories = _context.Categories.ToList();
-                
+
         }
 
        
         public void OnPost()
         {
             
+            var Advertisementlist = _context.Advertisements.Where(x => x.Title.IndexOf(Mysearch) != -1).ToList();
         }
     }
 }

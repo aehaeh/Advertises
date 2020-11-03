@@ -16,8 +16,9 @@ namespace Advertises
         {
             _context = context;
         }
-        [BindProperty]
 
+
+        [BindProperty]
         public Category MyCategory
         {
             set;

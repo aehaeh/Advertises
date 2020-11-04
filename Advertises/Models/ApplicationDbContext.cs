@@ -16,6 +16,8 @@ namespace Advertises.Models
         public DbSet<Advertisement> Advertisements { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Local> Locations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()

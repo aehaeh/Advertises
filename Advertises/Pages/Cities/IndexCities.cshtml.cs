@@ -7,33 +7,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Advertises.Pages.Categories
+namespace Advertises
 {
-    public class IndexModel : PageModel
-       
+    public class IndexCitiesModel : PageModel
     {
-       private ApplicationDbContext _context;
+        private ApplicationDbContext _context;
 
-        public IndexModel(ApplicationDbContext context)
+        public IndexCitiesModel(ApplicationDbContext context)
         {
             _context = context;
         }
         [BindProperty]
-        public IList<Category> Categories 
+        public IList<City> Cities
         {
             get;
-            set; 
+            set;
         }
-      
         public DbSet<Advertisement> Advertisementlist { get; private set; }
 
         public void OnGet()
         {
-            Categories = _context.Categories.ToList();
-
+            Cities = _context.Cities.ToList();
         }
-
-       
-      
     }
 }

@@ -13,7 +13,7 @@ namespace Advertises
     {
         private ApplicationDbContext _context;
         public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
-
+        public List<SelectListItem> ListCities { get; set; } = new List<SelectListItem>();
         public addAdvertisementModel(ApplicationDbContext context)
         {
             _context = context;
@@ -40,11 +40,26 @@ namespace Advertises
                 Value = v.Id.ToString()              
             }).ToList();
         }
+        public void PopulateCityDropDownList(IList<City> cities,
+            List<long> selectedCity)
+        {
+            var cityQuery = from d in cities
+                                orderby d.Name // Sort by name.
+                                select d;
+
+            ListCities = cityQuery.Select(v => new SelectListItem
+            {
+                Text = v.Name,
+                Value = v.Id.ToString()
+            }).ToList();
+        }
 
         public void OnGet()
         {
             var categories = _context.Categories.ToList();
             PopulateCategoryDropDownList(categories, null);
+            var cities = _context.Cities.ToList();
+            PopulateCityDropDownList(cities, null);
         }
         public void OnPost()
         {

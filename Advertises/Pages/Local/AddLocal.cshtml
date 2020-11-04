@@ -1,0 +1,33 @@
+﻿@page
+@model Advertises.AddLocalModel
+@{
+    ViewData["Title"] = "AddLocal";
+    Layout = "~/Pages/Account/_Layout.cshtml";
+}
+
+<h1>AddLocal</h1>
+
+<div class="row">
+    <div class="col-5">
+        <form method="post">
+            <div>
+                <input type="text" asp-for="MyLocal.Name" placeholder="" />
+            </div>
+
+
+            <div>
+                <button type="submit">
+                    ذخیره
+
+                </button>
+
+            </div>
+            <div>
+
+
+            </div>
+
+        </form>
+    </div>
+
+</div>

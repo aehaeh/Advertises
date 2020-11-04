@@ -1,0 +1,51 @@
+﻿@page
+@model Advertises.IndexCitiesModel
+@{
+    ViewData["Title"] = "IndexCities";
+    Layout = "~/Pages/Account/_Layout.cshtml";
+}
+
+<h1>IndexCities</h1>
+
+<p>
+    <a asp-page="Add">Create New</a>
+</p>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cities[0].Name)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Cities)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+
+
+
+
+    </table>
+    <div>
+        <div>
+
+        </div>
+    </div>
+</body>

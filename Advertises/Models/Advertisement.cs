@@ -54,6 +54,16 @@ namespace Advertises.Models
             get;
 
         }
+        public City City
+        {
+            set;
+            get;
+        }
+        public long CityId
+        {
+            set;
+            get;
+        }
 
     }
 

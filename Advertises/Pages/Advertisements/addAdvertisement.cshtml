@@ -10,9 +10,9 @@
     <div class="col-5">
         <form method="post">
             <div>
-                <input type="text" asp-for="MyAdvertisement.Title"   placeholder="نام کالا" />
+                <input type="text" asp-for="MyAdvertisement.Title" placeholder="نام کالا" />
             </div>
-            
+
             <div>
                 <textarea asp-for="MyAdvertisement.Description">
                     
@@ -22,11 +22,14 @@
             </div>
 
             <div>
-               <input type="number" asp-for="MyAdvertisement.price"/>
+                <input type="number" asp-for="MyAdvertisement.price" />
 
             </div>
             <div>
                 <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.CategoryId"></select>
+            </div>
+            <div>
+                <select asp-items="Model.ListCities" asp-for="MyAdvertisement.CityId"></select>
             </div>
             <div>
                 <button type="submit">
@@ -36,7 +39,7 @@
 
             </div>
             <div>
-               
+
 
             </div>
 

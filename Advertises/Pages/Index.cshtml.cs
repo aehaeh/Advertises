@@ -26,12 +26,24 @@ namespace Advertises.Pages
             get;
             set;
         }
+        [BindProperty]
+        public string Mysearch
+        {
+            set;
+            get;
 
-       
+        }
+
 
         public void OnGet()
         {
             Advertisements = _context.Advertisements.ToList();
+        }
+        public void OnPost()
+        {
+
+            Advertisements= _context.Advertisements.Where(x => x.Title.Contains(Mysearch)).ToList();
+            
         }
     }
 }

@@ -96,9 +96,35 @@ namespace Advertises.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("localId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("localId");
+
                     b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Advertises.Models.Local", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("Advertises.Models.User", b =>
@@ -139,6 +165,15 @@ namespace Advertises.Migrations
                     b.HasOne("Advertises.Models.City", "City")
                         .WithMany()
                         .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Advertises.Models.City", b =>
+                {
+                    b.HasOne("Advertises.Models.Local", "local")
+                        .WithMany()
+                        .HasForeignKey("localId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

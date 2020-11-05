@@ -26,6 +26,7 @@ namespace Advertises.Models
             set;
             get;
         }
+        
         public ICollection<Advertisement> advertisements
         {
             get; 

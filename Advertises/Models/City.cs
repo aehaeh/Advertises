@@ -22,14 +22,9 @@ namespace Advertises.Models
             get;
 
         }
-        public Local local
-        {
-            set;
-            get;
-        }
-             
-             
 
-        public long localId { set; get; }
+        public List<Local> Locals { get; set; }
+       
+        
     }
 }

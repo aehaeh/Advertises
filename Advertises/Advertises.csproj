@@ -17,9 +17,11 @@
   <ItemGroup>
     <_ResolveComReferenceCache Remove="obj\Debug\netcoreapp3.1\Advertises.csproj.ResolveComReference.cache" />
     <_ResolveComReferenceCache Remove="obj\Debug\netcoreapp3.1\Advertises.csproj.ResolveComReference.cache" />
+    <_ResolveComReferenceCache Remove="obj\Debug\netcoreapp3.1\Advertises.csproj.ResolveComReference.cache" />
   </ItemGroup>
 
   <ItemGroup>
+    <IntermediateAssembly Remove="obj\Debug\netcoreapp3.1\Advertises.dll" />
     <IntermediateAssembly Remove="obj\Debug\netcoreapp3.1\Advertises.dll" />
     <IntermediateAssembly Remove="obj\Debug\netcoreapp3.1\Advertises.dll" />
   </ItemGroup>
@@ -27,9 +29,11 @@
   <ItemGroup>
     <_DebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.1\Advertises.pdb" />
     <_DebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.1\Advertises.pdb" />
+    <_DebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.1\Advertises.pdb" />
   </ItemGroup>
 
   <ItemGroup>
+    <_DeploymentManifestEntryPoint Remove="obj\Debug\netcoreapp3.1\Advertises.dll" />
     <_DeploymentManifestEntryPoint Remove="obj\Debug\netcoreapp3.1\Advertises.dll" />
     <_DeploymentManifestEntryPoint Remove="obj\Debug\netcoreapp3.1\Advertises.dll" />
   </ItemGroup>
@@ -37,9 +41,11 @@
   <ItemGroup>
     <ApplicationManifest Remove="obj\Debug\netcoreapp3.1\Advertises.dll.manifest" />
     <ApplicationManifest Remove="obj\Debug\netcoreapp3.1\Advertises.dll.manifest" />
+    <ApplicationManifest Remove="obj\Debug\netcoreapp3.1\Advertises.dll.manifest" />
   </ItemGroup>
 
   <ItemGroup>
+    <DeployManifest Remove="obj\Debug\netcoreapp3.1\Advertises.application" />
     <DeployManifest Remove="obj\Debug\netcoreapp3.1\Advertises.application" />
     <DeployManifest Remove="obj\Debug\netcoreapp3.1\Advertises.application" />
   </ItemGroup>
@@ -47,9 +53,11 @@
   <ItemGroup>
     <ClsidMap Remove="obj\Debug\netcoreapp3.1\Advertises.clsidmap" />
     <ClsidMap Remove="obj\Debug\netcoreapp3.1\Advertises.clsidmap" />
+    <ClsidMap Remove="obj\Debug\netcoreapp3.1\Advertises.clsidmap" />
   </ItemGroup>
 
   <ItemGroup>
+    <RegFreeComManifest Remove="obj\Debug\netcoreapp3.1\Advertises.X.manifest" />
     <RegFreeComManifest Remove="obj\Debug\netcoreapp3.1\Advertises.X.manifest" />
     <RegFreeComManifest Remove="obj\Debug\netcoreapp3.1\Advertises.X.manifest" />
   </ItemGroup>
@@ -57,9 +65,11 @@
   <ItemGroup>
     <RazorIntermediateAssembly Remove="obj\Debug\netcoreapp3.1\Advertises.Views.dll" />
     <RazorIntermediateAssembly Remove="obj\Debug\netcoreapp3.1\Advertises.Views.dll" />
+    <RazorIntermediateAssembly Remove="obj\Debug\netcoreapp3.1\Advertises.Views.dll" />
   </ItemGroup>
 
   <ItemGroup>
+    <_RazorDebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.1\Advertises.Views.pdb" />
     <_RazorDebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.1\Advertises.Views.pdb" />
     <_RazorDebugSymbolsIntermediatePath Remove="obj\Debug\netcoreapp3.1\Advertises.Views.pdb" />
   </ItemGroup>
@@ -67,11 +77,29 @@
   <ItemGroup>
     <UpToDateCheckBuilt Remove="obj\Debug\netcoreapp3.1\Advertises.Views.dll" />
     <UpToDateCheckBuilt Remove="obj\Debug\netcoreapp3.1\Advertises.Views.dll" />
+    <UpToDateCheckBuilt Remove="obj\Debug\netcoreapp3.1\Advertises.Views.dll" />
   </ItemGroup>
 
   <ItemGroup>
     <_RazorComponentDeclarationAssembly Remove="obj\Debug\netcoreapp3.1\RazorDeclaration\Advertises.dll" />
     <_RazorComponentDeclarationAssembly Remove="obj\Debug\netcoreapp3.1\RazorDeclaration\Advertises.dll" />
+    <_RazorComponentDeclarationAssembly Remove="obj\Debug\netcoreapp3.1\RazorDeclaration\Advertises.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="obj\**" />
   </ItemGroup>
 
 

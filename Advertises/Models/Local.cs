@@ -20,7 +20,10 @@ namespace Advertises.Models
         {
             set;
             get;
-
         }
+
+        public City City { get; set; }
+        public long CityId { get; set; }
+        
     }
 }

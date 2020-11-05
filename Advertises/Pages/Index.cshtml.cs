@@ -20,6 +20,7 @@ namespace Advertises.Pages
         {
             _context = context;
         }
+        
         [BindProperty]
         public IList<Advertisement> Advertisements
         {

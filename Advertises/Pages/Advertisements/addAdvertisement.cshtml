@@ -29,7 +29,10 @@
                 <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.CategoryId"></select>
             </div>
             <div>
-                <select asp-items="Model.ListCities" asp-for="MyAdvertisement.CityId"></select>
+                <select id="cityDp" asp-items="Model.ListCities" asp-for="SelectedCity" onchange="cityChange()"  ></select>
+            </div>
+            <div>
+                <select id="localDp" asp-for="MyAdvertisement.LocalId"></select>
             </div>
             <div>
                 <button type="submit">
@@ -46,3 +49,24 @@
     </div>
 
 </div>
+<script>
+
+    function cityChange() {
+        var aa = $('#cityDp').val(); 
+       
+         $.ajax({  
+           type: "GET",  
+           url: "/Advertisements/addAdvertisement?handler=ChangeCity&cityid="+aa,            
+           success: function (data) {  
+               var s ='';  
+               for (var i = 0; i < data.length; i++) {  
+
+                   s += '<option value="' + data[i].id + '">' + data[i].name + '</option>'; 
+                   
+               }  
+               $("#localDp").html(s);  
+           }  
+       });  
+    }
+
+</script>

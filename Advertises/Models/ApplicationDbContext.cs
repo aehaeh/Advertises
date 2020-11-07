@@ -24,6 +24,11 @@ namespace Advertises.Models
                 .HasMany(c => c.advertisements)
                 .WithOne(e => e.Category)
                 .HasForeignKey(e => e.CategoryId);
+
+            modelBuilder.Entity<Local>()
+                .HasMany(c => c.Advertisements)
+                .WithOne(e => e.Local)
+                .HasForeignKey(e => e.LocalId);
         }
 
     }

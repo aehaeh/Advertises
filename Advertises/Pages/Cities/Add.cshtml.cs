@@ -10,6 +10,7 @@ namespace Advertises
 {
     public class AddModel : PageModel
     {
+
         private ApplicationDbContext _context;
 
         public AddModel(ApplicationDbContext context)

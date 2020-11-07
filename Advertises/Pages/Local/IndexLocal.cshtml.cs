@@ -23,7 +23,7 @@ namespace Advertises
             get;
             set;
         }
-        public DbSet<City> CityList { get;  set; }
+        public DbSet<Advertisement> Advertisementlist { get; private set; }
         public void OnGet()
         {
            Locations = _context.Locations.ToList();

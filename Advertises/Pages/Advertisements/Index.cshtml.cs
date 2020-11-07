@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Advertises.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Advertises.Pages.Advertisements
 {
@@ -23,7 +24,10 @@ namespace Advertises.Pages.Advertisements
         }
         public void OnGet()
         {
-            Advrtiseslist = _context.Advertisements.OrderByDescending(x=>x.CreateDate).ToList()
+            Advrtiseslist = _context.Advertisements
+                .Include(x => x.Local)
+                .ThenInclude(x => x.City)
+                .OrderByDescending(x=>x.CreateDate).ToList()
                 ;
         }
         public void OnPost()

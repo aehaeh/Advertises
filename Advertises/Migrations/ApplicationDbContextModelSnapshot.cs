@@ -29,9 +29,6 @@ namespace Advertises.Migrations
                     b.Property<long>("CategoryId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("CityId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -40,6 +37,9 @@ namespace Advertises.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<long>("LocalId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -54,7 +54,7 @@ namespace Advertises.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("LocalId");
 
                     b.ToTable("Advertisements");
                 });
@@ -96,12 +96,7 @@ namespace Advertises.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("localId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("localId");
 
                     b.ToTable("Cities");
                 });
@@ -113,6 +108,9 @@ namespace Advertises.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long>("CityId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -123,6 +121,8 @@ namespace Advertises.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityId");
 
                     b.ToTable("Locations");
                 });
@@ -162,18 +162,18 @@ namespace Advertises.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Advertises.Models.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
+                    b.HasOne("Advertises.Models.Local", "Local")
+                        .WithMany("Advertisements")
+                        .HasForeignKey("LocalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Advertises.Models.City", b =>
+            modelBuilder.Entity("Advertises.Models.Local", b =>
                 {
-                    b.HasOne("Advertises.Models.Local", "local")
-                        .WithMany()
-                        .HasForeignKey("localId")
+                    b.HasOne("Advertises.Models.City", "City")
+                        .WithMany("Locals")
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

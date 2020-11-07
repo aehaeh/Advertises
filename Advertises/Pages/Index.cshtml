@@ -27,28 +27,36 @@
                 @foreach (var item in Model.Advertisements)
                 {
 
-                    <div class="advertise-item">
-                        <div class="advertise-propertis">
-                            <div class="advertise-div">
-                                @item.Title
-                            </div>
+                <div class="advertise-item">
+                    <div class="advertise-propertis">
+                        <div class="advertise-div">
+                            @item.Title
+                        </div>
 
 
 
-                            <div class="advertise-div">
-                                @item.Description
-
-                            </div>
-                            <div class="advertise-div">
-                                @item.price
-                            </div>
+                        <div class="advertise-div">
+                            @item.Description
 
                         </div>
-                        <div class="advertise-image">
-                            <img class="advertise-image-size" src="~/download.png" />
+                        <div class="advertise-div">
+                            @item.price
+                        </div>
+
+                        <div class="advertise-div">
+                            @item.Local.Name
+                        </div>
+                        <div class="advertise-div">
+                            @item.Local.City.Name
                         </div>
 
                     </div>
+                    <div class="advertise-image">
+                        <img class="advertise-image-size" src="~/download.png" />
+                    </div>
+
+                   
+                </div>
 
                 }
             </div>

@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Advertises.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Advertises
 {
     public class AddLocalModel : PageModel
     {
+        public List<SelectListItem> ListCities { get; set; } = new List<SelectListItem>();
         private ApplicationDbContext _context;
 
         public AddLocalModel(ApplicationDbContext context)
@@ -23,9 +25,23 @@ namespace Advertises
             get;
         }
 
+        public void PopulateCityDropDownList(IList<City> cities,
+           List<long> selectedCity)
+        {
+            var cityQuery = from d in cities
+                            orderby d.Name // Sort by name.
+                            select d;
+
+            ListCities = cityQuery.Select(v => new SelectListItem
+            {
+                Text = v.Name,
+                Value = v.Id.ToString()
+            }).ToList();
+        }
         public void OnGet()
         {
-
+            var cities = _context.Cities.ToList();
+            PopulateCityDropDownList(cities, null);
         }
         public void Onpost()
         {

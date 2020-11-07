@@ -54,12 +54,20 @@ namespace Advertises.Models
             get;
 
         }
-        
-        public City City {set;get;}
-        public long CityId {set;get;}
 
-        
-        
+       
+        public Local Local
+        {
+            set;
+            get;
+        }
+
+        public long LocalId
+        {
+            set;
+            get;
+        }
+
     }
 
 

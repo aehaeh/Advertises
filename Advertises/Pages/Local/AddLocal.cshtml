@@ -13,7 +13,9 @@
             <div>
                 <input type="text" asp-for="MyLocal.Name" placeholder="" />
             </div>
-
+            <div>
+                <select asp-items="Model.ListCities" asp-for="MyLocal.CityId"></select>
+            </div>
 
             <div>
                 <button type="submit">

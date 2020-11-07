@@ -24,6 +24,10 @@ namespace Advertises.Models
 
         public City City { get; set; }
         public long CityId { get; set; }
-        
+        public List<Advertisement> Advertisements
+        {
+            get;
+            set;
+        }
     }
 }

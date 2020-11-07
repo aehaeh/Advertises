@@ -14,6 +14,7 @@ namespace Advertises
         private ApplicationDbContext _context;
         public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> ListCities { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> ListLocations { get; set; } = new List<SelectListItem>();
         public addAdvertisementModel(ApplicationDbContext context)
         {
             _context = context;
@@ -25,7 +26,12 @@ namespace Advertises
             set;
             get;
         }
-        
+        public long SelectedCity
+        {
+            get;
+            set;
+        }
+       
 
         public void PopulateCategoryDropDownList(IList<Category> categories,
             List<long> selectedCategory)
@@ -53,6 +59,19 @@ namespace Advertises
                 Value = v.Id.ToString()
             }).ToList();
         }
+        public void PopulateLocalDropDownList(IList<Local> Locations,
+           List<long> selectedLocal)
+        {
+            var localQuery = from d in Locations
+                            orderby d.Name // Sort by name.
+                            select d;
+
+            ListLocations = localQuery.Select(v => new SelectListItem
+            {
+                Text = v.Name,
+                Value = v.Id.ToString()
+            }).ToList();
+        }
 
         public void OnGet()
         {
@@ -60,6 +79,8 @@ namespace Advertises
             PopulateCategoryDropDownList(categories, null);
             var cities = _context.Cities.ToList();
             PopulateCityDropDownList(cities, null);
+            var Locations = _context.Locations.ToList();
+            PopulateLocalDropDownList(Locations, null);
         }
         public void OnPost()
         {
@@ -67,6 +88,17 @@ namespace Advertises
             MyAdvertisement.IsActive = false;
             _context.Advertisements.Add(MyAdvertisement);
             _context.SaveChanges();
+
+        }
+        public JsonResult OnGetChangeCity(long cityid)
+        {
+
+            var locations = _context.Locations
+                .Where(x=>x.CityId==cityid)
+                .ToList();
+            
+
+            return new JsonResult(locations);
 
         }
     }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Advertises.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Advertises.Pages
@@ -38,7 +39,10 @@ namespace Advertises.Pages
 
         public void OnGet()
         {
-            Advertisements = _context.Advertisements.ToList();
+            Advertisements = _context.Advertisements
+                .Include(x => x.Local)
+                .ThenInclude(x => x.City)
+                .ToList();
         }
         public void OnPost()
         {

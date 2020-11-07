@@ -20,32 +20,40 @@
                 </th>
                 <th> @Html.DisplayNameFor(model => model.Advrtiseslist[0].price)</th>
                 <th> @Html.DisplayNameFor(model => model.Advrtiseslist[0].Description)</th>
-                
 
-                <th></th>
+
+                <th>@Html.DisplayNameFor(model => model.Advrtiseslist[0].Local)</th>
+                <th>@Html.DisplayNameFor(model => model.Advrtiseslist[0].Local.City)</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Advrtiseslist)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Local.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Local.City.Name)
+                </td>
 
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                        |
-                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
 
             }
         </tbody>

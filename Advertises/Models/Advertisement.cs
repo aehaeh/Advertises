@@ -67,6 +67,16 @@ namespace Advertises.Models
             set;
             get;
         }
+        public InnerCategory InnerCategory
+        {
+            get;
+            set;
+        }
+        public long InnerCategoryId
+        {
+            set;
+            get;
+        }
 
     }
 

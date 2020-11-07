@@ -1,0 +1,35 @@
+﻿@page
+@model Advertises.Pages.InnerCategories.AddModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Pages/Account/_Layout.cshtml";
+}
+
+<h1>Add</h1>
+
+<div class="row">
+    <div class="col-5">
+        <form method="post">
+            <div>
+                <input type="text" asp-for="MyInnerCategory.Title" placeholder="" />
+            </div>
+            <div>
+                <select asp-items="Model.ListCategories" asp-for="MyInnerCategory.CategoryId"></select>
+            </div>
+
+            <div>
+                <button type="submit">
+                    ذخیره
+
+                </button>
+
+            </div>
+            <div>
+
+
+            </div>
+
+        </form>
+    </div>
+
+</div>

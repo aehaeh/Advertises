@@ -26,13 +26,16 @@
 
             </div>
             <div>
-                <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.CategoryId"></select>
+                <select id="categoryDp" asp-items="Model.ListCategories" asp-for="SelectedCategory" onchange="categoryChange()"></select>
             </div>
             <div>
-                <select id="cityDp" asp-items="Model.ListCities" asp-for="SelectedCity" onchange="cityChange()"  ></select>
+                <select id="cityDp" asp-items="Model.ListCities" asp-for="SelectedCity" onchange="cityChange()"></select>
             </div>
             <div>
                 <select id="localDp" asp-for="MyAdvertisement.LocalId"></select>
+            </div>
+            <div>
+                <select id="innercategoryDp" asp-for="MyAdvertisement.InnerCategoryId"></select>
             </div>
             <div>
                 <button type="submit">
@@ -51,22 +54,43 @@
 </div>
 <script>
 
-    function cityChange() {
-        var aa = $('#cityDp').val(); 
+    function categoryChange() {
+        var bb = $('#categoryDp').val(); 
        
          $.ajax({  
            type: "GET",  
-           url: "/Advertisements/addAdvertisement?handler=ChangeCity&cityid="+aa,            
+           url: "/Advertisements/addAdvertisement?handler=ChangeCategory&categoryid="+bb,            
            success: function (data) {  
                var s ='';  
                for (var i = 0; i < data.length; i++) {  
 
-                   s += '<option value="' + data[i].id + '">' + data[i].name + '</option>'; 
+                   s += '<option value="' + data[i].id + '">' + data[i].title + '</option>'; 
                    
                }  
-               $("#localDp").html(s);  
+               $("#innercategoryDp").html(s);  
            }  
        });  
+    }
+
+</script>
+<script>
+
+    function cityChange() {
+        var aa = $('#cityDp').val();
+
+        $.ajax({
+            type: "GET",
+            url: "/Advertisements/addAdvertisement?handler=ChangeCity&cityid=" + aa,
+            success: function (data) {
+                var s = '';
+                for (var i = 0; i < data.length; i++) {
+
+                    s += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+
+                }
+                $("#localDp").html(s);
+            }
+        });
     }
 
 </script>

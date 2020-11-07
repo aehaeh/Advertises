@@ -13,6 +13,7 @@ namespace Advertises
     {
         private ApplicationDbContext _context;
         public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> ListInnerCategories { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> ListCities { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> ListLocations { get; set; } = new List<SelectListItem>();
         public addAdvertisementModel(ApplicationDbContext context)
@@ -31,7 +32,12 @@ namespace Advertises
             get;
             set;
         }
-       
+        public long SelectedCategory
+        {
+            get;
+            set;
+        }
+        public object InnerCategorie { get; private set; }
 
         public void PopulateCategoryDropDownList(IList<Category> categories,
             List<long> selectedCategory)
@@ -73,6 +79,21 @@ namespace Advertises
             }).ToList();
         }
 
+        public void PopulateInnerCategoryDropDownList(IList<InnerCategory> InnerCategories,
+           List<long> selectedInnerCategory)
+        {
+            var innercategoryQuery = from d in InnerCategories
+                                     orderby d.Title // Sort by name.
+                                select d;
+
+            ListInnerCategories = innercategoryQuery.Select(v => new SelectListItem
+            {
+                Text = v.Title,
+                Value = v.Id.ToString()
+            }).ToList();
+        }
+
+
         public void OnGet()
         {
             var categories = _context.Categories.ToList();
@@ -81,6 +102,8 @@ namespace Advertises
             PopulateCityDropDownList(cities, null);
             var Locations = _context.Locations.ToList();
             PopulateLocalDropDownList(Locations, null);
+            var innercategories = _context.InnerCategories.ToList();
+            PopulateInnerCategoryDropDownList(innercategories, null);
         }
         public void OnPost()
         {
@@ -99,6 +122,17 @@ namespace Advertises
             
 
             return new JsonResult(locations);
+
+        }
+        public JsonResult OnGetChangeCategory(long categoryid)
+        {
+
+            var innercattegory = _context.InnerCategories
+                .Where(x => x.CategoryId == categoryid)
+                .ToList();
+
+
+            return new JsonResult(innercattegory);
 
         }
     }

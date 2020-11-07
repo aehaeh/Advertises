@@ -27,6 +27,7 @@ namespace Advertises
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddAuthentication(options =>
             {
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -42,10 +43,10 @@ namespace Advertises
             services.AddControllersWithViews();
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AllowAnonymousToFolder("/");
                 options.Conventions.AuthorizeFolder("/Advertisements");
                 options.Conventions.AuthorizeFolder("/Categories");
                 options.Conventions.AllowAnonymousToFolder("/Account");
+                options.Conventions.AllowAnonymousToFolder("/");
             });
            
         }

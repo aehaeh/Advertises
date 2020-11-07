@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertises", "Advertises\Advertises.csproj", "{B04983EB-DFD8-4D6A-BB86-002BC73FBC1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFiller", "DataFiller\DataFiller.csproj", "{DCC4A3C0-FCB5-49F2-B8FE-42F3F13702FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B04983EB-DFD8-4D6A-BB86-002BC73FBC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B04983EB-DFD8-4D6A-BB86-002BC73FBC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B04983EB-DFD8-4D6A-BB86-002BC73FBC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC4A3C0-FCB5-49F2-B8FE-42F3F13702FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC4A3C0-FCB5-49F2-B8FE-42F3F13702FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC4A3C0-FCB5-49F2-B8FE-42F3F13702FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC4A3C0-FCB5-49F2-B8FE-42F3F13702FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

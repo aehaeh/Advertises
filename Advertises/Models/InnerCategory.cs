@@ -33,6 +33,8 @@ namespace Advertises.Models
             get;
             set;
         }
-
+     
     }
+
 }
+

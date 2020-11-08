@@ -22,10 +22,10 @@ namespace Advertises.Models
         public DbSet<Local> Locations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>()
-                .HasMany(c => c.advertisements)
-                .WithOne(e => e.Category)
-                .HasForeignKey(e => e.CategoryId);
+            modelBuilder.Entity<InnerCategory>()
+                .HasMany(c => c.Advertisements)
+                .WithOne(e => e.InnerCategory)
+                .HasForeignKey(e => e.InnerCategoryId);
 
             modelBuilder.Entity<Local>()
                 .HasMany(c => c.Advertisements)

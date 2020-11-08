@@ -24,7 +24,7 @@
             <label>فعال </label>
             <input type="checkbox" asp-for="MyAdvertisement.IsActive" />
             <div>
-                <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.CategoryId"></select>
+                <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.InnerCategoryId"></select>
             </div>
             <div>
                 <button type="submit">

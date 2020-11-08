@@ -43,7 +43,7 @@ namespace Advertises
             ttt.Title = MyAdvertisement.Title;
             ttt.Description = MyAdvertisement.Description;
             ttt.IsActive = MyAdvertisement.IsActive;
-            ttt.CategoryId = MyAdvertisement.CategoryId;
+            ttt.InnerCategoryId = MyAdvertisement.InnerCategoryId;
 
 
             _context.Advertisements.Update(ttt);

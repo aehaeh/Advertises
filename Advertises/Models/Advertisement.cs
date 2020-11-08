@@ -42,11 +42,11 @@ namespace Advertises.Models
             set;
             get;
         }
-        public long CategoryId
-        {
-            set;
-            get;
-        }
+        //public long CategoryId
+        //{
+        //    set;
+        //    get;
+        //}
 
         public bool IsActive
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -77,7 +78,8 @@ namespace Advertises.Models
             set;
             get;
         }
-
+        public List<Image> Images { get; set; }
+        
     }
 
 

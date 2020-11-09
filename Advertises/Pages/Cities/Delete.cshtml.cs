@@ -27,9 +27,9 @@ namespace Advertises
         {
             MyCity = _context.Cities.SingleOrDefault(m => m.Id == id);
         }
-        public void OnPost(int? id)
+        public void OnPost()
         {
-            _context.Cities.SingleOrDefault(m => m.Id == id);
+           
             if (MyCity != null)
             {
                 _context.Cities.Remove(MyCity);

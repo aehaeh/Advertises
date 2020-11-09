@@ -26,9 +26,9 @@ namespace Advertises.Pages.InnerCategories
         {
             MyInnerCategory = _context.InnerCategories.SingleOrDefault(m => m.Id == id);
         }
-        public void OnPost(int? id)
+        public void OnPost()
         {
-            _context.InnerCategories.SingleOrDefault(m => m.Id == id);
+           
             if (MyInnerCategory != null)
             {
                 _context.InnerCategories.Remove(MyInnerCategory);

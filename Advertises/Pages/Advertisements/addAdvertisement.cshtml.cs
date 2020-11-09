@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,9 +18,18 @@ namespace Advertises
         public List<SelectListItem> ListInnerCategories { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> ListCities { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> ListLocations { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> ListImages { get; set; } = new List<SelectListItem>();
+        public List<string> FileNames { get; set; }
         public addAdvertisementModel(ApplicationDbContext context)
         {
             _context = context;
+        }
+        
+        [BindProperty]
+        public IFormFile[] photos
+        {
+            get;
+            set;
         }
 
         [BindProperty]
@@ -107,6 +118,22 @@ namespace Advertises
         }
         public void OnPost()
         {
+            MyAdvertisement.Images = new List<Image>();
+
+            if (photos != null && photos.Length > 0)
+            {
+               
+                foreach (IFormFile photo in photos)
+                {
+                    MyAdvertisement.Images.Add(new Image()
+                    {
+                        File = ConvertToBytes(photo)
+                    });
+                }
+            }
+
+
+
             MyAdvertisement.CreateDate = DateTime.Now;
             MyAdvertisement.IsActive = false;
             _context.Advertisements.Add(MyAdvertisement);
@@ -133,6 +160,19 @@ namespace Advertises
 
 
             return new JsonResult(innercattegory);
+
+        }
+
+        private byte[] ConvertToBytes(IFormFile file)
+        {
+            Stream stream = file.OpenReadStream();
+            using (var memoryStream = new MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                return memoryStream.ToArray();
+            }
+
+
 
         }
     }

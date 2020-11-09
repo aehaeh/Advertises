@@ -26,9 +26,9 @@ namespace Advertises
         {
             MyLocal = _context.Locations.SingleOrDefault(m => m.Id == id);
         }
-        public void OnPost(int? id)
+        public void OnPost()
         {
-            _context.Locations.SingleOrDefault(m => m.Id == id);
+           
             if (MyLocal != null)
             {
                 _context.Locations.Remove(MyLocal);

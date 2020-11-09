@@ -26,6 +26,9 @@
 
             </div>
             <div>
+                <input type="file" asp-for="photos" multiple="multiple" accept="image/*"/>
+            </div>
+            <div>
                 <select id="categoryDp" asp-items="Model.ListCategories" asp-for="SelectedCategory" onchange="categoryChange()"></select>
             </div>
             <div>
@@ -37,6 +40,8 @@
             <div>
                 <select id="innercategoryDp" asp-for="MyAdvertisement.InnerCategoryId"></select>
             </div>
+
+
             <div>
                 <button type="submit">
                     درج آگهی

@@ -20,6 +20,8 @@ namespace Advertises.Models
 
         public DbSet<City> Cities { get; set; }
         public DbSet<Local> Locations { get; set; }
+        public DbSet<Image> Images { get; set;
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<InnerCategory>()
@@ -31,6 +33,11 @@ namespace Advertises.Models
                 .HasMany(c => c.Advertisements)
                 .WithOne(e => e.Local)
                 .HasForeignKey(e => e.LocalId);
+
+            modelBuilder.Entity<Advertisement>()
+                .HasMany(c => c.Images)
+                .WithOne(e => e.Advertisment)
+                .HasForeignKey(e => e.AdvertismentId);
         }
 
     }

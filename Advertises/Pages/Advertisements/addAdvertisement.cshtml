@@ -8,7 +8,7 @@
 <h1>addAdvertisement</h1>
 <div class="row">
     <div class="col-5">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div>
                 <input type="text" asp-for="MyAdvertisement.Title" placeholder="نام کالا" />
             </div>
@@ -26,7 +26,8 @@
 
             </div>
             <div>
-                <input type="file" asp-for="photos" multiple="multiple" accept="image/*"/>
+                
+                <input type="file" name="files" multiple="multiple" accept="image/*"/>
             </div>
             <div>
                 <select id="categoryDp" asp-items="Model.ListCategories" asp-for="SelectedCategory" onchange="categoryChange()"></select>

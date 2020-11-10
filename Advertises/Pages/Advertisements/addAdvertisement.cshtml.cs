@@ -25,12 +25,7 @@ namespace Advertises
             _context = context;
         }
         
-        [BindProperty]
-        public IFormFile[] photos
-        {
-            get;
-            set;
-        }
+       
 
         [BindProperty]
         public Advertisement MyAdvertisement
@@ -116,18 +111,18 @@ namespace Advertises
             var innercategories = _context.InnerCategories.ToList();
             PopulateInnerCategoryDropDownList(innercategories, null);
         }
-        public void OnPost()
+        public void OnPost(List<IFormFile> files)
         {
             MyAdvertisement.Images = new List<Image>();
 
-            if (photos != null && photos.Length > 0)
+            if (files != null && files.Count > 0)
             {
                
-                foreach (IFormFile photo in photos)
+                foreach (IFormFile uploadedFile in files)
                 {
                     MyAdvertisement.Images.Add(new Image()
                     {
-                        File = ConvertToBytes(photo)
+                        File = ConvertToBytes(uploadedFile)
                     });
                 }
             }

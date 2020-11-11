@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -79,8 +80,17 @@ namespace Advertises.Models
             get;
         }
         public List<Image> Images { get; set; }
+
+        [NotMapped]
+        public string SelectedImage
+        {
+            get;
+            set;
+
+        }
         
     }
+    
 
 
 }

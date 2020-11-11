@@ -17,6 +17,12 @@ namespace Advertises.Pages.Advertisements
         {
             _context = context;
         }
+        public string SelectetImage
+        {
+            set;
+            get;
+        }
+
         public IList<Advertisement> Advrtiseslist
         {
             get;
@@ -24,10 +30,15 @@ namespace Advertises.Pages.Advertisements
         }
         public void OnGet()
         {
+
+
+
+
             Advrtiseslist = _context.Advertisements
+                
                 .Include(x => x.Local)
                 .ThenInclude(x => x.City)
-                .OrderByDescending(x=>x.CreateDate).ToList()
+                .OrderByDescending(x => x.CreateDate).ToList()
                 ;
         }
         public void OnPost()

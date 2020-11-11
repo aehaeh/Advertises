@@ -6,6 +6,7 @@ using Advertises.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Advertises
 {
@@ -26,6 +27,11 @@ namespace Advertises
             get;
             set;
         }
+        public IList<Advertisement> Advertisements
+        {
+            get;
+            set;
+        }
 
 
         public void OnGet(long id)
@@ -33,9 +39,12 @@ namespace Advertises
 
             var categories = _context.Categories.ToList();
             PopulateCategoryDropDownList(categories, null);
-           MyAdvertisement= _context.Advertisements.FirstOrDefault(x=>x.Id==id);
+           MyAdvertisement= _context.Advertisements
+                 .Include(x => x.Images)
+                .FirstOrDefault(x=>x.Id==id);
             
-            
+
+
         }
         public void OnPost()
         {
@@ -51,6 +60,7 @@ namespace Advertises
 
             var categories = _context.Categories.ToList();
             PopulateCategoryDropDownList(categories, null);
+            
         }
         public void PopulateCategoryDropDownList(IList<Category> categories,
            List<long> selectedCategory)

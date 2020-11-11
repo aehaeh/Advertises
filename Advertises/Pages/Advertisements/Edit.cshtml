@@ -1,8 +1,9 @@
 ﻿@page
+@using Advertises.Models
 @model Advertises.EditModel
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Pages/Account/_Layout.cshtml";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 <h1>Edit</h1>
@@ -27,6 +28,17 @@
                 <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.InnerCategoryId"></select>
             </div>
             <div>
+                @foreach (Image img in Model.MyAdvertisement.Images)
+                {
+                <div class="advertise_img">
+                    <img class="td_Image" src="@("data:image/png;base64," + Convert.ToBase64String(img.File))" />
+                    <div>
+                        <a>حذف</a>
+                    </div>
+                </div>
+                }
+            </div>
+            <div>
                 <button type="submit">
                     ذخیره
 
@@ -36,3 +48,14 @@
         </form>
     </div>
 </div>
+<script>
+
+
+    $(document).ready(function () {
+
+        $('div.advertis_img a').click(function () {
+            $(this).parent().remove()
+        });
+    })
+
+</script>

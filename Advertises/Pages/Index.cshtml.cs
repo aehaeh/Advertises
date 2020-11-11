@@ -52,9 +52,9 @@ namespace Advertises.Pages
 
             foreach (Advertisement iteam in Advertisements)
             {
-                if (iteam.Images == null && iteam.Images.Count > 0)
+                if (iteam.Images != null && iteam.Images.Count > 0)
                 {
-                    iteam.SelectedImage = Convert.ToBase64String(iteam.Images.First().File);
+                    iteam.SelectedImage = "data:image/png;base64,"+ Convert.ToBase64String(iteam.Images.First().File);
                 }
             }
         }

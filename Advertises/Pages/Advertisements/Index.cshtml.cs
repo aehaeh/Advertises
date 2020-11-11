@@ -35,11 +35,18 @@ namespace Advertises.Pages.Advertisements
 
 
             Advrtiseslist = _context.Advertisements
-                
+                .Include(x=> x.Images)
                 .Include(x => x.Local)
                 .ThenInclude(x => x.City)
                 .OrderByDescending(x => x.CreateDate).ToList()
                 ;
+            foreach (Advertisement item in Advrtiseslist)
+            {
+                if(item.Images != null && item.Images.Count > 0)
+                {
+                    item.SelectedImage = "data:image/png;base64," + Convert.ToBase64String(item.Images.First().File);
+                }
+            }
         }
         public void OnPost()
         {

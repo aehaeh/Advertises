@@ -16,6 +16,9 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Advrtiseslist[0].SelectedImage)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Advrtiseslist[0].Title)
                 </th>
                 <th> @Html.DisplayNameFor(model => model.Advrtiseslist[0].price)</th>
@@ -31,6 +34,11 @@
             @foreach (var item in Model.Advrtiseslist)
             {
             <tr>
+                <td >
+                    <div >
+                        <img class="td_Image" src="@item.SelectedImage" />
+                    </div>
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>

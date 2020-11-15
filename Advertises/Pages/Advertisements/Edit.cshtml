@@ -4,7 +4,12 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+
 }
+
+
+
+
 
 <h1>Edit</h1>
 
@@ -30,12 +35,14 @@
             <div>
                 @foreach (Image img in Model.MyAdvertisement.Images)
                 {
-                <div class="advertise_img">
-                    <img class="td_Image" src="@("data:image/png;base64," + Convert.ToBase64String(img.File))" />
-                    <div>
-                        <a>حذف</a>
+                    <div class="advertise_img">
+
+                        <img class="td_Image" src="@("data:image/png;base64," + Convert.ToBase64String(img.File))" />
+                        <div>
+                            <span> حذف </span>
+                        </div>
+                        
                     </div>
-                </div>
                 }
             </div>
             <div>
@@ -48,13 +55,14 @@
         </form>
     </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
 
 
     $(document).ready(function () {
 
-        $('div.advertis_img a').click(function () {
-            $(this).parent().remove()
+        $('div.advertise_img span').click(function () {
+            $(this).parent().parent().remove()
         });
     })
 

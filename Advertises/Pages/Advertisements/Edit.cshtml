@@ -33,11 +33,14 @@
                 <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.InnerCategoryId"></select>
             </div>
             <div>
-                @foreach (Image img in Model.MyAdvertisement.Images)
+
+                @for(int i=0;i<=Model.MyAdvertisement.Images.Count; i++)
+                @*@foreach (Image img in Model.MyAdvertisement.Images)*@
                 {
                     <div class="advertise_img">
 
-                        <img class="td_Image" src="@("data:image/png;base64," + Convert.ToBase64String(img.File))" />
+                        <img class="td_Image" src="@("data:image/png;base64," + Convert.ToBase64String(Model.MyAdvertisement.Images[i].File))" />
+                        <input type="hidden" asp-for="MyAdvertisement.Images[i].Id" />
                         <div>
                             <span> حذف </span>
                         </div>
@@ -50,7 +53,7 @@
                     ذخیره
 
                 </button>
-
+                <a asp-page="./Index">Back to List</a>
             </div>
         </form>
     </div>

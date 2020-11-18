@@ -1,22 +1,21 @@
 ﻿@page
-@model Advertises.DeleteModel
+@model Advertises.Pages.Users.DeleteModel
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
 <h1>Delete</h1>
-
 <div>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MyCity.Name): @Model.MyCity.Name
+            @Html.DisplayNameFor(model => model.MyUser.UserName): @Model.MyUser.UserName
         </dt>
     </dl>
     <form method="post">
-        <input type="hidden" asp-for="MyCity.Id" />
+        <input type="hidden" asp-for="MyUser.UserId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-page="./IndexCities">Back to List</a>
+        <a asp-page="./Index">Back to List</a>
     </form>
 
 </div>

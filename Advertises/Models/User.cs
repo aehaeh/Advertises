@@ -11,14 +11,14 @@ namespace Advertises.Models
         [Display(Name ="نام کاربری")]
         public string UserName { set; get; }
         [Key]
-         public long Id { set; get; }
+         public long UserId { set; get; }
 
         public string FirstName { set; get; }
         public string LasttName { set; get; }
         public string PhoneNumber { set; get; }
         public string Password { set; get; }
-      
-
+     
+        public List<UserRole> UserRoles { set; get; }
 
 
        

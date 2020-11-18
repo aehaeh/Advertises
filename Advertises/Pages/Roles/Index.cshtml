@@ -1,12 +1,11 @@
 ﻿@page
-@model Advertises.IndexCitiesModel
+@model Advertises.Pages.Roles.IndexModel
 @{
-    ViewData["Title"] = "IndexCities";
+    ViewData["Title"] = "Index";
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>IndexCities</h1>
-
+<h1>Index</h1>
 <p>
     <a asp-page="Add">Create New</a>
 </p>
@@ -15,24 +14,24 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Cities[0].Name)
+                    @Html.DisplayNameFor(model => model.Roles[0].RoleName)
                 </th>
 
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Cities)
+            @foreach (var item in Model.Roles)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.RoleName)
                     </td>
 
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Edit" asp-route-id="@item.RoleId">Edit</a> |
                         |
-                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-page="./Delete" asp-route-id="@item.RoleId">Delete</a>
                     </td>
                 </tr>
 
@@ -45,7 +44,7 @@
     </table>
     <div>
         <div>
-            
+
         </div>
     </div>
 </body>

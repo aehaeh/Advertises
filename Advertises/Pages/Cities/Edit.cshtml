@@ -1,16 +1,22 @@
 ﻿@page
-@model Advertises.AddModel
+@model Advertises.Pages.Cities.EditModel
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Edit";
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>Add City</h1>
+<h1>Edit</h1>
 <div class="row">
     <div class="col-5">
         <form method="post">
             <div>
+                <label>عنوان</label>
                 <input type="text" asp-for="MyCity.Name" placeholder="" />
+
+            </div>
+            <div>
+
+                <input type="hidden" asp-for="MyCity.Id" />
             </div>
 
 
@@ -21,12 +27,7 @@
                 </button>
 
             </div>
-            <div>
-
-                <a asp-page="./IndexCities">Back to List</a>
-            </div>
-
+            <a asp-page="./IndexCities">Back to List</a>
         </form>
     </div>
-
 </div>

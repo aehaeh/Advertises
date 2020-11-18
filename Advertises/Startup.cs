@@ -36,17 +36,19 @@ namespace Advertises
             }).AddCookie(options =>
             {
                 options.LoginPath = new PathString("/Account/Login");
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5.0);
+                options.ExpireTimeSpan = TimeSpan.FromDays(10);
             });
 
             services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AuthorizeFolder("/Advertisements");
+                /*options.Conventions.AuthorizeFolder("/Advertisements/");
                 options.Conventions.AuthorizeFolder("/Categories");
+                options.Conventions.AuthorizeFolder("/Cities");
+                options.Conventions.AuthorizeFolder("/Local");
                 options.Conventions.AllowAnonymousToFolder("/Account");
-                options.Conventions.AllowAnonymousToFolder("/");
+                options.Conventions.AllowAnonymousToPage("/Index");*/
             });
            
         }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,6 +12,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Advertises
 {
+
+    [Authorize]
     public class addAdvertisementModel : PageModel
     {
         private ApplicationDbContext _context;

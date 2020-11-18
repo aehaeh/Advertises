@@ -38,19 +38,21 @@ namespace Advertises
 
         }
 
-        public async Task OnPostAsync()
+        public async Task<ActionResult> OnPostAsync()
         {
             var user = _context.Users.FirstOrDefault(x => x.UserName == MyUser.UserName && x.Password == MyUser.Password);
             if (user != null)
             {
                 Massege = "ورود موفق";
-                await this.SignInUser(user.UserName, false);
-                RedirectToPage("/");
+                await SignInUser(user.UserName, false);
+                return RedirectToPage("/Index");
             }
             else
             {
                 Massege = "چنین کاربرری یافت نشد";
             }
+
+            return Page();
         }
         private async Task SignInUser(string username, bool isPersistent)
         {
@@ -65,8 +67,12 @@ namespace Advertises
                 var claimPrincipal = new ClaimsPrincipal(claimIdenties);
                 var authenticationManager = Request.HttpContext;
 
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdenties), new AuthenticationProperties() { IsPersistent = true }).ContinueWith(prop =>
+                    {
+                        RedirectToPage("/");
+                    });
                 // Sign In.  
-                await authenticationManager.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrincipal, new AuthenticationProperties() { IsPersistent = false });
+                //await authenticationManager.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrincipal, new AuthenticationProperties() { IsPersistent = false });
 
             }
             catch (Exception ex)

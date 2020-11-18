@@ -20,6 +20,7 @@ namespace Advertises
         }
 
         public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
+        public List<long> DeletedImagesId { get; set; } = new List<long>();
 
         [BindProperty]
         public Advertisement MyAdvertisement

@@ -32,6 +32,7 @@ namespace Advertises
             get;
             set;
         }
+        public List<long> SelectedImagesId { set; get; }
 
 
         public void OnGet(long id)
@@ -39,16 +40,16 @@ namespace Advertises
 
             var categories = _context.Categories.ToList();
             PopulateCategoryDropDownList(categories, null);
-           MyAdvertisement= _context.Advertisements
-                 .Include(x => x.Images)
-                .FirstOrDefault(x=>x.Id==id);
-            
+            MyAdvertisement = _context.Advertisements
+                  .Include(x => x.Images)
+                 .FirstOrDefault(x => x.Id == id);
+
 
 
         }
         public void OnPost()
         {
-            var ttt = _context.Advertisements.FirstOrDefault(x=>x.Id==MyAdvertisement.Id);
+            var ttt = _context.Advertisements.FirstOrDefault(x => x.Id == MyAdvertisement.Id);
             ttt.Title = MyAdvertisement.Title;
             ttt.Description = MyAdvertisement.Description;
             ttt.IsActive = MyAdvertisement.IsActive;
@@ -60,7 +61,7 @@ namespace Advertises
 
             var categories = _context.Categories.ToList();
             PopulateCategoryDropDownList(categories, null);
-            
+
         }
         public void PopulateCategoryDropDownList(IList<Category> categories,
            List<long> selectedCategory)

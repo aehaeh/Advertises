@@ -17,6 +17,8 @@
 <div class="row">
     <div class="col-5">
         <form method="post">
+            <div class="deleteImage">                             
+            </div>
             <div>
                 <label>عنوان</label>
                 <input type="text" asp-for="MyAdvertisement.Title" placeholder="عنوان" />
@@ -65,7 +67,11 @@
     $(document).ready(function () {
 
         $('div.advertise_img span').click(function () {
-            $(this).parent().parent().remove()
+            $(this).parent().parent().remove();
+            $('<input>').attr({
+                type: 'hidden',                
+                name: 'bb'
+                }).appendTo('div.deleteImage');
         });
     })
 

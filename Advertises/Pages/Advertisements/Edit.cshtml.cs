@@ -20,7 +20,7 @@ namespace Advertises
         }
 
         public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
-        public List<long> DeletedImagesId { get; set; } = new List<long>();
+        
 
         [BindProperty]
         public Advertisement MyAdvertisement
@@ -33,6 +33,7 @@ namespace Advertises
             get;
             set;
         }
+        [BindProperty]
         public List<long> SelectedImagesId { set; get; }
 
 
@@ -50,12 +51,18 @@ namespace Advertises
         }
         public void OnPost()
         {
-            var ttt = _context.Advertisements.FirstOrDefault(x => x.Id == MyAdvertisement.Id);
+            var ttt = _context.Advertisements.Include(x=>x.Images).FirstOrDefault(x => x.Id == MyAdvertisement.Id);
+
+            foreach(long imageId in SelectedImagesId)
+            {
+                ttt.Images.Remove(ttt.Images.FirstOrDefault(x => x.Id == imageId));
+            }
+
             ttt.Title = MyAdvertisement.Title;
             ttt.Description = MyAdvertisement.Description;
             ttt.IsActive = MyAdvertisement.IsActive;
             ttt.InnerCategoryId = MyAdvertisement.InnerCategoryId;
-
+            
 
             _context.Advertisements.Update(ttt);
             _context.SaveChanges();

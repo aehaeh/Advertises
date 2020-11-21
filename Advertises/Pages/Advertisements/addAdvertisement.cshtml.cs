@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Advertises
 {
 
-    [Authorize]
+    
     public class addAdvertisementModel : PageModel
     {
         private ApplicationDbContext _context;

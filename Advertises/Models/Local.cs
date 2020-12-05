@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace Advertises.Models
 {
-    public class Local
+    public class Local:BaseEntity
     {
         public string Name { set; get; }
-        [Key]
-        public long Id { set; get; }
+       
 
-        public DateTime CreateDate
-        {
-            set; get;
-        }
+       
         public bool IsActive
         {
             set;

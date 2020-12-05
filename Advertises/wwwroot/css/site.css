@@ -1,8 +1,8 @@
 ﻿
 
-body {
+/*body {
     direction: rtl;
-}
+}*/
 
 #p1 {
     display: inline-table;
@@ -21,7 +21,7 @@ body {
    */
 
 
-.advertise-main {
+/*.advertise-main {
     width: 100%;
     border-color: darkred;
     height: 90%;
@@ -57,7 +57,7 @@ body {
     width: 50%;
     align-items: center;
    
-}
+}*/
 
 .advertise-propertis {
     width: 50%;

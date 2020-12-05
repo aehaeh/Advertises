@@ -5,13 +5,9 @@ using System.Threading.Tasks;
 
 namespace Advertises.Models
 {
-    public class Image
+    public class Image :BaseEntity
     {
-        public long Id
-        {
-            set;
-            get;
-        }
+       
         public long AdvertismentId
         {
             set;

@@ -5,19 +5,19 @@
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>IndexLocal</h1>
+<h1>مدیریت محله </h1>
 <p>
-    <a asp-page="AddLocal">Create New</a>
+    <a asp-page="AddLocal">ایجاد محله جدید</a>
 </p>
 <body>
-    <table class="table">
+    <table class="table rtl">
         <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Locations[0].Name)
                 </th>
 
-                <th></th>
+                <th> حذف </th>
             </tr>
         </thead>
         <tbody>
@@ -31,14 +31,14 @@
                     <td>
 
                         |
-                        <a asp-page="./Delete" asp-route-id="@item.Id">DeleteLocal</a>
+                        <a asp-page="./DeleteLocal" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
-                <a asp-page="./IndexLocal">Back to List</a>
+                
             }
         </tbody>
 
-
+        <a asp-page="./IndexLocal"> Back to List</a>
 
 
     </table>

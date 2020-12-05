@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Advertises</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-rtl/css/bootstrap-rtl.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="rtl">
+
+        <nav class=" navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3 " role="navigation">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Advertises</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -19,81 +21,118 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                    <ul class=" nav-pills navbar-nav flex-grow-1">
+                        <li class="  nav-item ">
+                            <a class="nav-link text-light active" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Account/Register">ثبت نام</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Account/Register">ثبت نام</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Account/Login">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Account/Login">
                                 ورود
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Advertisements/addAdvertisement">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Advertisements/addAdvertisement">
                                 ثبت آگهی
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Categories/Index">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Categories/Index">
                                 دسته بندی
 
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="Advertisements/Index">
-                                مدیریت آگهی
 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="Cities/IndexCities">
-                                مدیریت شهر
 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="Local/IndexLocal">
-                                مدیریت محله
+                        <li class="dropdown mt-2">
+                            <a href="#" data-toggle="dropdown" class="text-light " aria-haspopup="true" aria-expanded="false" id="dropdownMenu2"> مدیریت <span class="caret"></span> </a>
 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="InnerCategories/Index">
-                                مدیریت دسته بندی داخلی
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="Roles/Index">
-                                مدیریت دسترسی
 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="Users/Index">
-                                دسترسی کاربران
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="Advertisements/Index">
+                                        مدیریت آگهی
 
-                            </a>
+                                    </a>
+                                </li>
+
+
+                                <li class="dropdown-divider"></li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="Cities/IndexCities">
+                                        مدیریت شهر
+
+                                    </a>
+                                </li>
+
+                                <li class="dropdown-divider"></li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="Local/IndexLocal">
+                                        مدیریت محله
+
+                                    </a>
+                                </li>
+
+                                <li class="dropdown-divider"></li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="InnerCategories/Index">
+                                        مدیریت دسته بندی داخلی
+
+                                    </a>
+                                </li>
+
+
+                                <li class="dropdown-divider"></li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="Roles/Index">
+                                        مدیریت دسترسی
+
+                                    </a>
+                                </li>
+
+
+                                <li class="dropdown-divider"></li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="Users/Index">
+                                        دسترسی کاربران
+
+                                    </a>
+                                </li>
+
+                            </ul>
                         </li>
+
+
+
+
+
+
+
+
+
+
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-<div class="container">
-    <div>
-        is logedin : @User.Identity.IsAuthenticated
-    </div>
-    <main role="main" class="pb-3">
+    <div class="container-fluid ">
+
         @RenderBody()
-    </main>
-</div>
+
+    </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -103,6 +142,8 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap-rtl/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)

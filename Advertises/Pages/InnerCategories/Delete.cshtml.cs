@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,29 +11,32 @@ namespace Advertises.Pages.InnerCategories
 {
     public class DeleteModel : PageModel
     {
-        private ApplicationDbContext _context;
+       
+        private IBaseService<InnerCategory> _innerCategoryService;
 
-        public DeleteModel(ApplicationDbContext context)
+        public DeleteModel(IBaseService<InnerCategory> innerCategoryService)
         {
-            _context = context;
+            _innerCategoryService = innerCategoryService;
         }
+
+        
         [BindProperty]
         public InnerCategory MyInnerCategory
         {
             set;
             get;
         }
-        public void OnGet(int? id)
+        public void OnGet(long id)
         {
-            MyInnerCategory = _context.InnerCategories.SingleOrDefault(m => m.Id == id);
+            MyInnerCategory = _innerCategoryService.Get(id);
         }
         public void OnPost()
         {
            
             if (MyInnerCategory != null)
             {
-                _context.InnerCategories.Remove(MyInnerCategory);
-                _context.SaveChanges();
+                _innerCategoryService.Delete(MyInnerCategory.Id);
+                
             }
         }
     }

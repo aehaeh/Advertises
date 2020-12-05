@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,29 +11,30 @@ namespace Advertises
 {
     public class DeleteLocalModel : PageModel
     {
-        private ApplicationDbContext _context;
+        private IBaseService<Local> _localService;
 
-        public DeleteLocalModel(ApplicationDbContext context)
+        public DeleteLocalModel(IBaseService<Local> localService)
         {
-            _context = context;
+            _localService = localService;
         }
+
         [BindProperty]
         public Local MyLocal
         {
             set;
             get;
         }
-        public void OnGet(int? id)
+        public void OnGet(long id)
         {
-            MyLocal = _context.Locations.SingleOrDefault(m => m.Id == id);
+            MyLocal = _localService.Get(id);
         }
         public void OnPost()
         {
            
             if (MyLocal != null)
             {
-                _context.Locations.Remove(MyLocal);
-                _context.SaveChanges();
+               _localService.Delete(MyLocal.Id);
+                
             }
         }
     }

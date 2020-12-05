@@ -5,28 +5,30 @@
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>Add City</h1>
-<div class="row">
-    <div class="col-5">
-        <form method="post">
-            <div>
-                <input type="text" asp-for="MyCity.Name" placeholder="" />
-            </div>
+
+    <div class="row justify-content-center">
+       
+        <div class="col-5">
+            <form method="post" class="col-md-8 m-auto justify-content-center shadow p-3 mb-5 bg-white rounded text-center">
+                <h1>ایجاد شهر جدید</h1>
+                <div>
+                    <input type="text" asp-for="MyCity.Name" placeholder=""  class="form-control"/>
+                </div>
 
 
-            <div>
-                <button type="submit">
-                    ذخیره
+                <div>
+                    <button type="submit" class=" btn btn-success mt-3 ">
+                        ذخیره
 
-                </button>
+                    </button>
 
-            </div>
-            <div>
+                </div>
+                <div>
 
-                <a asp-page="./IndexCities">Back to List</a>
-            </div>
+                    <a asp-page="./IndexCities">Back to List</a>
+                </div>
 
-        </form>
+            </form>
+        </div>
+
     </div>
-
-</div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -11,12 +12,14 @@ namespace Advertises.Pages.Roles
     public class DeleteModel : PageModel
     {
 
-        private ApplicationDbContext _context;
+        
+        private IBaseService<Role> _roleService;
 
-        public DeleteModel(ApplicationDbContext context)
+        public DeleteModel(IBaseService<Role> roleService)
         {
-            _context = context;
+            _roleService = roleService;
         }
+
         [BindProperty]
         public Role MyRole
         {
@@ -24,17 +27,17 @@ namespace Advertises.Pages.Roles
             set;
         }
 
-        public void OnGet(int? id)
+        public void OnGet(long id)
         {
-            MyRole = _context.Roles.SingleOrDefault(m => m.RoleId == id );
+            MyRole = _roleService.Get(id );
         }
         public void OnPost()
         {
 
             if (MyRole != null)
             {
-                _context.Roles.Remove(MyRole);
-                _context.SaveChanges();
+              _roleService.Delete(MyRole.Id);
+                
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -15,11 +16,12 @@ namespace Advertises.Pages
         private readonly ILogger<IndexModel> _logger;
 
 
-        private ApplicationDbContext _context;
+       
+        private IAdvertismentService _advertismentService;
 
-        public IndexModel(ApplicationDbContext context)
+        public IndexModel(IAdvertismentService advertismentService)
         {
-            _context = context;
+            _advertismentService = advertismentService;
         }
 
         [BindProperty]
@@ -42,12 +44,11 @@ namespace Advertises.Pages
 
 
 
-            Advertisements = _context.Advertisements
+            Advertisements = _advertismentService.GetAll()
                 .Include(x => x.Images)
                 .Include(x => x.Local)
                 .ThenInclude(x => x.City)
                 .ToList();
-
 
 
             foreach (Advertisement iteam in Advertisements)
@@ -62,8 +63,8 @@ namespace Advertises.Pages
         public void OnPost()
         {
 
-            Advertisements = _context.Advertisements.Where(x => x.Title.Contains(Mysearch)).ToList();
-
+            //Advertisements = _context.Advertisements.Where(x => x.Title.Contains(Mysearch)).ToList();
+            Advertisements = _advertismentService.GetAll().ToList();
         }
     }
 }

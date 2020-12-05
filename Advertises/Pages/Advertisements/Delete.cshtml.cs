@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -11,12 +12,13 @@ namespace Advertises.Pages.Advertisements
 {
     public class DeleteModel : PageModel
     {
-        private ApplicationDbContext _context;
-     
+        private IAdvertismentService _advertismentService;
 
-        public DeleteModel(ApplicationDbContext context)
+
+
+        public DeleteModel(IAdvertismentService advertismentService)
         {
-            _context = context;
+            _advertismentService = advertismentService;
         }
         [BindProperty]
         public Advertisement Myadvrtisment
@@ -28,16 +30,19 @@ namespace Advertises.Pages.Advertisements
 
         public void OnGet(long id)
         {
-           Myadvrtisment= _context.Advertisements.SingleOrDefault(m => m.Id == id);
+           Myadvrtisment= _advertismentService.Get(id);
            
         }
         public void OnPost()
         {
             if (Myadvrtisment != null)
             {
-                _context.Advertisements.Remove(Myadvrtisment);
-                _context.SaveChanges();
+                _advertismentService.Delete(Myadvrtisment);                
             }
+
+           // RedirectToPage("/Advertisements/Index");
+            
+            
         }
     }
 }

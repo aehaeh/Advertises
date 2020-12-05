@@ -5,20 +5,21 @@
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>AddLocal</h1>
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-5">
-        <form method="post">
+        <form method="post" class="col-md-8 m-auto justify-content-center shadow p-3 mb-5 bg-white rounded text-center">
+            <h1>ایجاد محله جدید</h1>
+
             <div>
-                <input type="text" asp-for="MyLocal.Name" placeholder="" />
+                <input type="text" asp-for="MyLocal.Name" placeholder=""  class="form-control"/>
             </div>
             <div>
-                <select asp-items="Model.ListCities" asp-for="MyLocal.CityId"></select>
+                <select asp-items="Model.ListCities" asp-for="MyLocal.CityId" class="form-control"></select>
             </div>
 
             <div>
-                <button type="submit">
+                <button type="submit" class="btn btn-success mt-3">
                     ذخیره
 
                 </button>

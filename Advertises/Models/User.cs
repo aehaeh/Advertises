@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Advertises.Models
 {
-    public class User
+    public class User :BaseEntity
     {
         [Display(Name ="نام کاربری")]
         public string UserName { set; get; }
-        [Key]
-         public long UserId { set; get; }
+       
+        
 
         public string FirstName { set; get; }
         public string LasttName { set; get; }

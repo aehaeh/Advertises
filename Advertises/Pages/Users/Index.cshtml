@@ -11,7 +11,7 @@
     <a asp-page="Add">Create New</a>
 </p>
 <body>
-    <table class="table">
+    <table class="table rtl">
         <thead>
             <tr>
                 <th>
@@ -26,7 +26,10 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Users[0].PhoneNumber)
                 </th>
-                <th></th>
+                <th>
+                   ویرایش
+
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -46,9 +49,9 @@
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.UserId">Edit</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
                     |
-                    <a asp-page="./Delete" asp-route-id="@item.UserId">Delete</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger" >Delete</a>
                 </td>
             </tr>
 

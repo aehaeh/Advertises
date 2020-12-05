@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Advertises.Pages.InnerCategories
 {
+
     public class AddModel : PageModel
     {
-        public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
-        private ApplicationDbContext _context;
 
-        public AddModel(ApplicationDbContext context)
+
+
+
+
+        public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
+        private IBaseService<InnerCategory> _innerCategoryService;
+        private IBaseService<Category> _categoryService;
+        public AddModel(IBaseService<InnerCategory> innerCategoryService, IBaseService<Category> categoryService)
         {
-            _context = context;
+            _innerCategoryService = innerCategoryService;
+            _categoryService = categoryService;
         }
+
         [BindProperty]
         public InnerCategory MyInnerCategory
         {
@@ -29,7 +38,7 @@ namespace Advertises.Pages.InnerCategories
         {
             var categoryQuery = from d in categories
                                 orderby d.Title // Sort by name.
-                            select d;
+                                select d;
 
             ListCategories = categoryQuery.Select(v => new SelectListItem
             {
@@ -39,14 +48,17 @@ namespace Advertises.Pages.InnerCategories
         }
         public void OnGet()
         {
-            var categories = _context.Categories.ToList();
+            //var categories = _context.Categories.ToList();
+            //PopulateCategoryDropDownList(categories, null);
+            var categories = _categoryService.GetAll().ToList();
             PopulateCategoryDropDownList(categories, null);
         }
         public void Onpost()
         {
-            
-            _context.InnerCategories.Add(MyInnerCategory);
-            _context.SaveChanges();
+
+
+            _innerCategoryService.Insert(MyInnerCategory);
         }
+
     }
 }

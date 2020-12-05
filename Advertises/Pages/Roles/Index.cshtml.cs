@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,12 +11,14 @@ namespace Advertises.Pages.Roles
 {
     public class IndexModel : PageModel
     {
-        private ApplicationDbContext _context;
+       
+        private IBaseService<Role> _roleService;
 
-        public IndexModel(ApplicationDbContext context)
+        public IndexModel(IBaseService<Role> roleService)
         {
-            _context = context;
+            _roleService = roleService;
         }
+
         public List<Role> Roles
         {
             set;
@@ -24,7 +27,7 @@ namespace Advertises.Pages.Roles
 
         public void OnGet()
         {
-            Roles = _context.Roles.ToList();
+            Roles = _roleService.GetAll().ToList();
         }
     }
 }

@@ -7,28 +7,37 @@
 
 }
 
-<h1>Edit</h1>
+
+<div>
+    <h1 class="rtl text-center">ویرایش</h1>
+</div>
+<div class="row rtl justify-content-center">
 
 
-<div class="row">
+
     <div class="col-5">
-        <form method="post">
+
+        <form method="post" class=" col-md-4 m-auto justify-content-center">
             <div class="deleteImage">
             </div>
             <div>
                 <label>عنوان</label>
-                <input type="text" asp-for="MyAdvertisement.Title" placeholder="عنوان" />
+                <input type="text" asp-for="MyAdvertisement.Title" placeholder="عنوان" class="form-control mb-2 w-100" />
 
             </div>
             <div>
                 <label>توضیحات</label>
-                <input type="text" asp-for="MyAdvertisement.Description" placeholder="شرح" />
+                <input type="text" asp-for="MyAdvertisement.Description" placeholder="شرح" class="form-control mb-2 w-100" />
                 <input type="hidden" asp-for="MyAdvertisement.Id" />
             </div>
-            <label>فعال </label>
-            <input type="checkbox" asp-for="MyAdvertisement.IsActive" />
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" asp-for="MyAdvertisement.IsActive" class="custom-control-input mb-1 " id="customControlValidation1" required/>
+                <label class="custom-control-label" for="customControlValidation1">فعال </label>
+                <div class="invalid-feedback">برای فعال نمودن تیک را فعال کنید</div>
+
+            </div>
             <div>
-                <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.InnerCategoryId"></select>
+                <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.InnerCategoryId"  class="form-control mb-2 w-100"></select>
             </div>
             <div>
 
@@ -47,7 +56,7 @@
                 }
             </div>
             <div>
-                <button type="submit">
+                <button type="submit" class="mb-3  btn btn-primary">
                     ذخیره
 
                 </button>
@@ -58,7 +67,7 @@
 </div>
 
 @section Scripts {
-    
-   <script src="~/js/Edit.js" ></script>
+
+    <script src="~/js/Edit.js"></script>
 
 }

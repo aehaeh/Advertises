@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,13 +11,13 @@ namespace Advertises.Pages.Users
 {
     public class DeleteModel : PageModel
     {
+        private IBaseService<User>_userService;
 
-        private ApplicationDbContext _context;
-
-        public DeleteModel(ApplicationDbContext context)
+        public DeleteModel(IBaseService<User> userService)
         {
-            _context = context;
+            _userService = userService;
         }
+
         [BindProperty]
         public User MyUser
         {
@@ -24,17 +25,17 @@ namespace Advertises.Pages.Users
             set;
 
         }
-        public void OnGet(int? id)
+        public void OnGet(long id)
         {
-            MyUser = _context.Users.SingleOrDefault(m => m.UserId == id);
+            MyUser = _userService.Get(id);
         }
         public void OnPost()
         {
 
             if (MyUser != null)
             {
-                _context.Users.Remove(MyUser);
-                _context.SaveChanges();
+                _userService.Delete(MyUser.Id);
+                
             }
         }
     }

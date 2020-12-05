@@ -6,26 +6,16 @@ using System.Threading.Tasks;
 
 namespace Advertises.Models
 {
-    public class Category
+    public class Category : BaseEntity
     {
-        [Key]
-        public long Id { set; get; }
+      
         [Display(Name ="عنوان")]
         public string Title
         {
             set;
             get;
         }
-        public DateTime CreateDate
-        {
-            set;
-            get;
-        }
-        public DateTime? UpdatedDate
-        {
-            set;
-            get;
-        }
+        
         
         public ICollection<Advertisement> advertisements
         {

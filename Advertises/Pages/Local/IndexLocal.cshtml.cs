@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -11,12 +12,14 @@ namespace Advertises
 {
     public class IndexLocalModel : PageModel
     {
-        private ApplicationDbContext _context;
+        
+        private IBaseService<Local> _localService;
 
-        public IndexLocalModel(ApplicationDbContext context)
+        public IndexLocalModel(IBaseService<Local> localService)
         {
-            _context = context;
+            _localService = localService;
         }
+
         [BindProperty]
         public IList<Local> Locations
         {
@@ -26,7 +29,7 @@ namespace Advertises
         public DbSet<Advertisement> Advertisementlist { get; private set; }
         public void OnGet()
         {
-           Locations = _context.Locations.ToList();
+           Locations = _localService.GetAll().ToList();
         }
     }
 }

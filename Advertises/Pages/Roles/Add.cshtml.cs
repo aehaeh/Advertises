@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,12 +13,13 @@ namespace Advertises.Pages.Roles
     public class AddModel : PageModel
     {
         public List<SelectListItem> ListRoles { get; set; } = new List<SelectListItem>();
-        private ApplicationDbContext _context;
+        private IBaseService<Role> _roleService;
 
-        public AddModel(ApplicationDbContext context)
+        public AddModel(IBaseService<Role> roleService)
         {
-            _context = context;
+            _roleService = roleService;
         }
+
         [BindProperty]
         public Role MyRole
         {
@@ -32,8 +34,8 @@ namespace Advertises.Pages.Roles
         }
         public void OnPost()
         {
-            _context.Roles.Add(MyRole);
-            _context.SaveChanges();
+            _roleService.Insert(MyRole);
+            
         }
     }
 }

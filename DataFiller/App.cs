@@ -292,10 +292,11 @@ namespace DataFiller
             {
                Description="قاشق های استیل",
                CreateDate = DateTime.Now,
+               Title="فروش لوازم خانگی ",
                price= 90182,
                InnerCategoryId=innercategory1.Id,
                LocalId=local1.Id,
-                IsActive = true
+               IsActive = true
             };
 
 
@@ -310,6 +311,7 @@ namespace DataFiller
             {
                 Description = "لاستیک های بارز ایران",
                 CreateDate = DateTime.Now,
+                Title = "فروش لوازم جانبی خودرو",
                 price = 9000182,
                 InnerCategoryId = innercategory4.Id,
                 LocalId = local4.Id,

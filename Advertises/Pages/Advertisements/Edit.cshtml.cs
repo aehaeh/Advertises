@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,15 +13,17 @@ namespace Advertises
 {
     public class EditModel : PageModel
     {
-        private ApplicationDbContext _context;
+        private IAdvertismentService _advertismentService;
+        private IBaseService<Category> _categoryService;
 
-        public EditModel(ApplicationDbContext context)
+        public EditModel(IAdvertismentService advertismentService, IBaseService<Category> categoryService)
         {
-            _context = context;
+            _advertismentService = advertismentService;
+            _categoryService = categoryService;
         }
 
         public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
-        
+
 
         [BindProperty]
         public Advertisement MyAdvertisement
@@ -40,9 +43,10 @@ namespace Advertises
         public void OnGet(long id)
         {
 
-            var categories = _context.Categories.ToList();
+            //var categories = _context.Categories.ToList();
+            var categories = _categoryService.GetAll().ToList();
             PopulateCategoryDropDownList(categories, null);
-            MyAdvertisement = _context.Advertisements
+            MyAdvertisement = _advertismentService.GetAll()
                   .Include(x => x.Images)
                  .FirstOrDefault(x => x.Id == id);
 
@@ -51,9 +55,9 @@ namespace Advertises
         }
         public void OnPost()
         {
-            var ttt = _context.Advertisements.Include(x=>x.Images).FirstOrDefault(x => x.Id == MyAdvertisement.Id);
+            var ttt = _advertismentService.GetAll().Include(x => x.Images).FirstOrDefault(x => x.Id == MyAdvertisement.Id);
 
-            foreach(long imageId in SelectedImagesId)
+            foreach (long imageId in SelectedImagesId)
             {
                 ttt.Images.Remove(ttt.Images.FirstOrDefault(x => x.Id == imageId));
             }
@@ -62,12 +66,16 @@ namespace Advertises
             ttt.Description = MyAdvertisement.Description;
             ttt.IsActive = MyAdvertisement.IsActive;
             ttt.InnerCategoryId = MyAdvertisement.InnerCategoryId;
-            
 
-            _context.Advertisements.Update(ttt);
-            _context.SaveChanges();
 
-            var categories = _context.Categories.ToList();
+           // _context.Advertisements.Update(ttt);
+           // _context.SaveChanges();
+            _advertismentService.Update(ttt);
+            MyAdvertisement = _advertismentService.GetAll()
+                 .Include(x => x.Images)
+                .FirstOrDefault(x => x.Id == MyAdvertisement.Id);
+
+            var categories = _categoryService.GetAll().ToList();
             PopulateCategoryDropDownList(categories, null);
 
         }

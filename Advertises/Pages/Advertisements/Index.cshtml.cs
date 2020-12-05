@@ -31,9 +31,6 @@ namespace Advertises.Pages.Advertisements
         public void OnGet()
         {
 
-
-
-
             Advrtiseslist = _context.Advertisements
                 .Include(x=> x.Images)
                 .Include(x => x.Local)

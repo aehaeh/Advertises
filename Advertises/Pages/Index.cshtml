@@ -4,66 +4,77 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center" dir="rtl">
-   
-</div>
+
 <form method="post">
-        
-    <div class="container-fluid">
+
+    <div class="container-fluid mb-2">
         <center>
-            <input type="search" asp-for="Mysearch"  />
+            <input type="search" asp-for="Mysearch" />
             <button type="submit"> جستجو</button>
         </center>
     </div>
 </form>
-<h1 class="browse__headline">آگهی‌های خرید، فروش نو و دست دوم و کارکرده، استخدام و خدمات</h1>
 
-<div class="container-fluid text-right" dir="rtl">
-    <div class="advertise-main">
-        @if (Model.Advertisements?.Count > 0)
+<div class="row rtl">
+
+
+    @if (Model.Advertisements?.Count > 0)
+    {
+
+        @foreach (var item in Model.Advertisements)
         {
-            <div class="advertise-list ">
-                @Model.Advertisements[0].Title
-                @foreach (var item in Model.Advertisements)
-                {
-
-                <div class="advertise-item">
-                    <div class="advertise-propertis">
-                        <div class="advertise-div">
-                            @item.Title
-                        </div>
 
 
+            @*<div class=" card mb-3" style="max-width: 540px;" >
 
-                        <div class="advertise-div">
-                            @item.Description
 
-                        </div>
-                        <div class="advertise-div">
-                            @item.price
-                        </div>
-
-                        <div class="advertise-div">
-                            @item.Local.Name
-                        </div>
-                        <div class="advertise-div">
-                            @item.Local.City.Name
-                        </div>
-
+                <div class="no-gutters">
+                    <div class=" col-md-4" style="">
+                        <img class="card-img " src="@item.SelectedImage" />
                     </div>
-                    <div class="advertise-image">
-                        <img class="advertise-image-size" src="@item.SelectedImage" />
-                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
 
-                   
+                            <h4 class="card-title "> @item.Title</h4>
+                            <h5 class="card-title"> @item.price </h5>
+                            <p class="card-text">  @item.Description</p>
+                            <div class="card-text"> @item.Local.Name</div>
+                            <div class="card-text"> @item.Local.City.Name.</div>
+
+                            <div class="  ">
+                                <a href="#" class="btn btn-primary stretched-link ">مشاهده اطلاعات</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                </div>*@
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <h5 class="card-title ml-1 mt-1"> @item.Title</h5>
+                    <div class="card-body">
+                        <div class="row rtl">
+
+                            <div class="col-md-8 order-sm-0 order-1">
+                                <p class="card-text">@item.price</p>
+                                <p class="card-text">@item.Description</p>
+                                <p class="card-text">@item.Local.City.Name</p>
+                                <p class="card-text"> @item.Local.Name</p>
+                                <div class="  ">
+                                    <a href="#" class="btn btn-primary stretched-link ">مشاهده اطلاعات</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 order-sm-1 order-0">
+                                <img src="@item.SelectedImage" class="card-img" alt="...">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                }
             </div>
         }
 
+    }
 
 
-    </div>
 </div>
-

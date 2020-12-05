@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,11 +11,13 @@ namespace Advertises
 {
     public class AddCategoryModel : PageModel
     {
-        private ApplicationDbContext _context;
+        private IBaseService<Category> _categoryService;
 
-        public AddCategoryModel(ApplicationDbContext context)
+
+        public AddCategoryModel(IBaseService<Category> categoryService)
         {
-            _context = context;
+            _categoryService = categoryService;
+            
         }
 
 
@@ -31,9 +34,12 @@ namespace Advertises
         }
         public void OnPost()
         {
+            //MyCategory.CreateDate = DateTime.Now;
+            //_context.Categories.Add(MyCategory);
+            //_context.SaveChanges();
             MyCategory.CreateDate = DateTime.Now;
-            _context.Categories.Add(MyCategory);
-            _context.SaveChanges();
+            _categoryService.Insert(MyCategory);
+            
         }
     }
 }

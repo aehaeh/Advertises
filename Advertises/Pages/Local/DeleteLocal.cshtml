@@ -5,18 +5,21 @@
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>DeleteLocal</h1>
 
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MyLocal.Name): @Model.MyLocal.Name
-        </dt>
-    </dl>
-    <form method="post">
-        <input type="hidden" asp-for="MyLocal.Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-page="./IndexLocal">Back to List</a>
-    </form>
 
+<div class="row justify-content-center">
+    <div class="col-5  shadow p-3 mb-5 bg-white rounded text-center">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MyLocal.Name): @Model.MyLocal.Name
+            </dt>
+        </dl>
+
+        <form method="post" class="col-md-8 m-auto justify-content-center">
+            <h1>حذف محله </h1>
+            <input type="hidden" asp-for="MyLocal.Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-page="./IndexLocal">Back to List</a>
+        </form>
+    </div>
 </div>

@@ -5,28 +5,32 @@
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>addCategory</h1>
-<div class="row">
-<div class="col-5">
-    <form method="post">
-        <div>
-            <input type="text" asp-for="MyCategory.Title" placeholder="" />
-        </div>
+    
+
+            <h1 class=" text-center">ایجاد دسته بندی </h1>
+          
+                <div class="row rtl justify-content-center">
+                    <div class="col-5 shadow p-3 mb-5 bg-white rounded-pill ">
+                        <form method="post" class=" col-md-6 m-auto justify-content-center">
+                            <div>
+                                <input type="text" asp-for="MyCategory.Title" placeholder=" نام دسته بندی جدید" class="form-control mb-1 text-right" />
+                            </div>
 
 
-        <div>
-            <button type="submit">
-                ذخیره 
+                            <div>
+                                <button type="submit" class="btn btn-success">
+                                    ذخیره
 
-            </button>
+                                </button>
 
-        </div>
-        <div>
+                            </div>
+                            <div>
 
-            <a asp-page="./Index">Back to List</a>
-        </div>
+                                <a asp-page="./Index">Back to List</a>
+                            </div>
 
-    </form>
-</div>
+                        </form>
+                    </div>
 
-</div>
+                </div>
+          

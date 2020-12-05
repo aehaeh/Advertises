@@ -5,19 +5,22 @@
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1 class="text-center" >Index</h1>
 <p>
-    <a asp-page="Add">Create New</a>
+    <a asp-page="Add" class="btn btn-success">Create New</a>
 </p>
 <body>
-    <table class="table">
+    <table class="table rtl">
         <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Roles[0].RoleName)
                 </th>
 
-                <th></th>
+                <th>
+                    ویرایش
+
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -29,9 +32,9 @@
                     </td>
 
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.RoleId">Edit</a> |
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
                         |
-                        <a asp-page="./Delete" asp-route-id="@item.RoleId">Delete</a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
 

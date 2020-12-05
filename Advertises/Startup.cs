@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,7 +51,16 @@ namespace Advertises
                 options.Conventions.AllowAnonymousToFolder("/Account");
                 options.Conventions.AllowAnonymousToPage("/Index");*/
             });
-           
+
+
+            services
+            .AddTransient<IAdvertismentService, AdvertismentService>()
+            .AddTransient<IBaseService<Category>, BaseService<Category>>()
+            .AddTransient<IBaseService<City>, BaseService<City>>()
+            .AddTransient<IBaseService<Local>, BaseService<Local>>()
+            .AddTransient<IBaseService<Role>, BaseService<Role>>()
+            .AddTransient<IBaseService<User>, BaseService<User>>()
+            .AddTransient<IBaseService<InnerCategory>, BaseService<InnerCategory>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

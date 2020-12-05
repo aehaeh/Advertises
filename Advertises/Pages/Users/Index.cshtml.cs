@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,12 +11,11 @@ namespace Advertises.Pages.Users
 {
     public class IndexModel : PageModel
     {
-
-        private ApplicationDbContext _context;
-
-        public IndexModel(ApplicationDbContext context)
+        private IBaseService<User> _userService;
+        
+        public IndexModel(IBaseService<User> userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
         public List<User> Users
@@ -24,7 +24,7 @@ namespace Advertises.Pages.Users
         }
         public void OnGet()
         {
-            Users = _context.Users.ToList();
+            Users = _userService.GetAll().ToList();
         }
     }
 }

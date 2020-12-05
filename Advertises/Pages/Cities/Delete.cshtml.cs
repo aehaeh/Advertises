@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,12 +11,15 @@ namespace Advertises
 {
     public class DeleteModel : PageModel
     {
-        private ApplicationDbContext _context;
+        private IBaseService<City> _cityService;
 
-        public DeleteModel(ApplicationDbContext context)
+        public DeleteModel(IBaseService<City> cityService)
         {
-            _context = context;
+            _cityService = cityService;
+           
         }
+
+       
         [BindProperty]
         public City MyCity
         {
@@ -23,17 +27,20 @@ namespace Advertises
             get;
         }
 
-        public void OnGet(int? id)
+        public void OnGet(long id)
         {
-            MyCity = _context.Cities.SingleOrDefault(m => m.Id == id);
+            //MyCity = _context.Cities.SingleOrDefault(m => m.Id == id);
+            MyCity = _cityService.Get(id);
         }
         public void OnPost()
         {
            
             if (MyCity != null)
             {
-                _context.Cities.Remove(MyCity);
-                _context.SaveChanges();
+                //_context.Cities.Remove(MyCity);
+                //_context.SaveChanges();
+                _cityService.Delete(MyCity.Id);
+
             }
         }
     }

@@ -5,20 +5,21 @@
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>Add</h1>
 
-<div class="row">
-    <div class="col-5">
-        <form method="post">
+
+<div class="row justify-content-center">
+    <div class="col-5 shadow p-3 mb-5 bg-white rounded text-center">
+        <h1>ایجاد</h1>
+        <form method="post" class="col-md-8 m-auto justify-content-center ">
             <div>
-                <input type="text" asp-for="MyInnerCategory.Title" placeholder="" />
+                <input type="text" asp-for="MyInnerCategory.Title" placeholder="" class="form-control mb-2" />
             </div>
             <div>
-                <select asp-items="Model.ListCategories" asp-for="MyInnerCategory.CategoryId"></select>
+                <select asp-items="Model.ListCategories" asp-for="MyInnerCategory.CategoryId" class="form-control mb-2"></select>
             </div>
 
             <div>
-                <button type="submit">
+                <button type="submit" class="btn btn-success mb-4">
                     ذخیره
 
                 </button>

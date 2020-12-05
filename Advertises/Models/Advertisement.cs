@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Advertises.Models
 {
-    public class Advertisement
+    public class Advertisement : BaseEntity
     {
-        [Key]
-        public long Id { set; get; }
+
+        
         public string Title
         {
             set;
@@ -22,16 +22,7 @@ namespace Advertises.Models
             set;
             get;
         }
-        public DateTime CreateDate
-        {
-            set;
-            get;
-        }
-        public DateTime? UpdatedDate
-        {
-            set;
-            get;
-        }
+       
         public decimal price
         {
             get;
@@ -81,6 +72,7 @@ namespace Advertises.Models
         }
         public List<Image> Images { get; set; }
 
+
         [NotMapped]
         public string SelectedImage
         {
@@ -88,7 +80,7 @@ namespace Advertises.Models
             set;
 
         }
-        
+
     }
     
 

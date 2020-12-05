@@ -5,16 +5,19 @@
     Layout = "~/Pages/Account/_Layout.cshtml";
 }
 
-<h1>addAdvertisement</h1>
-<div class="row">
+
+<div class="row rtl justify-content-center">
     <div class="col-5">
-        <form method="post" enctype="multipart/form-data">
-            <div>
-                <input type="text" asp-for="MyAdvertisement.Title" placeholder="نام کالا" />
+        <h1 class="text-center">اضافه کردن آگاهی</h1>
+        <form method="post" enctype="multipart/form-data" class="col-md-6 m-auto justify-content-center text-center ">
+
+            <div class="align-content-center">
+                <input type="text" asp-for="MyAdvertisement.Title" placeholder="نام کالا" class="form-control mb-1 w-100 text-right" />
+                <span asp-validation-for="MyAdvertisement.Title"></span>
             </div>
 
             <div>
-                <textarea asp-for="MyAdvertisement.Description">
+                <textarea asp-for="MyAdvertisement.Description" class="form-control mb-1 w-100 text-right" placeholder="توضیحات ">
                     
                 </textarea>
 
@@ -22,29 +25,34 @@
             </div>
 
             <div>
-                <input type="number" asp-for="MyAdvertisement.price" />
+                <input type="number" asp-for="MyAdvertisement.price" class="form-control mb-1 w-100 text-right" placeholder="قیمت کالا " />
 
             </div>
-            <div>
+            <div class="custom-file mb-3">
+
+                <input type="file" class="custom-file-input" name="files" multiple="multiple" accept="image/*" />
+                <label class="custom-file-label text-left" for="validatedCustomFile">درج عکس</label>
                 
-                <input type="file" name="files" multiple="multiple" accept="image/*"/>
             </div>
             <div>
-                <select id="categoryDp" asp-items="Model.ListCategories" asp-for="SelectedCategory" onchange="categoryChange()"></select>
+                <select id="categoryDp" asp-items="Model.ListCategories" asp-for="SelectedCategory" onchange="categoryChange()" class="custom-select mb-2" ></select>
+
             </div>
             <div>
-                <select id="cityDp" asp-items="Model.ListCities" asp-for="SelectedCity" onchange="cityChange()"></select>
+                <select id="cityDp" asp-items="Model.ListCities" asp-for="SelectedCity" onchange="cityChange()" class="custom-select mb-2"></select>
             </div>
             <div>
-                <select id="localDp" asp-for="MyAdvertisement.LocalId"></select>
+                <select id="localDp" asp-for="MyAdvertisement.LocalId" class="custom-select mb-2"></select>
+                <span asp-validation-for="MyAdvertisement.LocalId"></span>
             </div>
             <div>
-                <select id="innercategoryDp" asp-for="MyAdvertisement.InnerCategoryId"></select>
+                <select id="innercategoryDp" asp-for="MyAdvertisement.InnerCategoryId" class="custom-select mb-2"></select>
+                <span asp-validation-for="MyAdvertisement.InnerCategoryId"></span>
             </div>
 
 
             <div>
-                <button type="submit">
+                <button type="submit" class="btn btn-primary ">
                     درج آگهی
 
                 </button>
@@ -58,45 +66,51 @@
     </div>
 
 </div>
-<script>
 
-    function categoryChange() {
-        var bb = $('#categoryDp').val(); 
-       
-         $.ajax({  
-           type: "GET",  
-           url: "/Advertisements/addAdvertisement?handler=ChangeCategory&categoryid="+bb,            
-           success: function (data) {  
-               var s ='';  
-               for (var i = 0; i < data.length; i++) {  
 
-                   s += '<option value="' + data[i].id + '">' + data[i].title + '</option>'; 
-                   
-               }  
-               $("#innercategoryDp").html(s);  
-           }  
-       });  
-    }
 
-</script>
-<script>
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
 
-    function cityChange() {
-        var aa = $('#cityDp').val();
+    <script>
 
-        $.ajax({
-            type: "GET",
-            url: "/Advertisements/addAdvertisement?handler=ChangeCity&cityid=" + aa,
-            success: function (data) {
-                var s = '';
-                for (var i = 0; i < data.length; i++) {
 
-                    s += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+        function categoryChange() {
+            var bb = $('#categoryDp').val();
 
+            $.ajax({
+                type: "GET",
+                url: "/Advertisements/addAdvertisement?handler=ChangeCategory&categoryid=" + bb,
+                success: function (data) {
+                    var s = '';
+                    for (var i = 0; i < data.length; i++) {
+
+                        s += '<option value="' + data[i].id + '">' + data[i].title + '</option>';
+
+                    }
+                    $("#innercategoryDp").html(s);
                 }
-                $("#localDp").html(s);
-            }
-        });
-    }
+            });
+        }
 
-</script>
+        function cityChange() {
+            var aa = $('#cityDp').val();
+
+            $.ajax({
+                type: "GET",
+                url: "/Advertisements/addAdvertisement?handler=ChangeCity&cityid=" + aa,
+                success: function (data) {
+                    var s = '';
+                    for (var i = 0; i < data.length; i++) {
+
+                        s += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+
+                    }
+                    $("#localDp").html(s);
+                }
+            });
+        }
+
+    </script>
+
+}

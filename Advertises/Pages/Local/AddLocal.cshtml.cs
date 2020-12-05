@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,12 +13,15 @@ namespace Advertises
     public class AddLocalModel : PageModel
     {
         public List<SelectListItem> ListCities { get; set; } = new List<SelectListItem>();
-        private ApplicationDbContext _context;
+        private IBaseService<Local> _localService;
+        private IBaseService<City> _cityService;
 
-        public AddLocalModel(ApplicationDbContext context)
+        public AddLocalModel(IBaseService<Local> localService, IBaseService<City> cityService)
         {
-            _context = context;
+            _localService = localService;
+            _cityService = cityService;
         }
+
         [BindProperty]
         public Local MyLocal
         {
@@ -40,14 +44,14 @@ namespace Advertises
         }
         public void OnGet()
         {
-            var cities = _context.Cities.ToList();
+            var cities = _cityService.GetAll().ToList();
             PopulateCityDropDownList(cities, null);
         }
         public void Onpost()
         {
             MyLocal.CreateDate = DateTime.Now;
-            _context.Locations.Add(MyLocal);
-            _context.SaveChanges();
+            _localService.Insert(MyLocal);
+            
         }
     }
 }

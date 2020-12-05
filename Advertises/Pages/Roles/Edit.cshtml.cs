@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,13 +11,13 @@ namespace Advertises.Pages.Roles
 {
     public class EditModel : PageModel
     {
+        private IBaseService<Role> _roleService;
 
-        private ApplicationDbContext _context;
-
-        public EditModel(ApplicationDbContext context)
+        public EditModel(IBaseService<Role> roleService)
         {
-            _context = context;
+            _roleService = roleService;
         }
+
         [BindProperty]
         public Role MyRole
         {
@@ -25,17 +26,17 @@ namespace Advertises.Pages.Roles
         }
         public void OnGet(long id)
         {
-            MyRole = _context.Roles.FirstOrDefault(x => x.RoleId == id); 
+            MyRole =_roleService.Get(id); 
 
         }
       
         public void Onpost()
         {
-            var tt = _context.Roles.FirstOrDefault(x => x.RoleId == MyRole.RoleId);
+            var tt = _roleService.Get(MyRole.Id);
             tt.RoleName = MyRole.RoleName;
 
-            _context.Roles.Update(tt);
-            _context.SaveChanges();
+            _roleService.Update(tt);
+            
         }
     }
 }

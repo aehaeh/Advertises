@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Advertises.Models
 {
-    public class InnerCategory
+    public class InnerCategory:BaseEntity
     {
-        [Key]
-        public long Id { set; get; }
+       
 
         public string Title
         {

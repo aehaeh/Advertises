@@ -8,17 +8,19 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Add">Create New</a>
+    <a asp-page="Add">ایجاد</a>
 </p>
 <body>
-    <table class="table">
+    <table class="table rtl">
         <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.InnerCategories[0].Title)
                 </th>
 
-                <th></th>
+                <th>
+                    حذف 
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +34,7 @@
                     <td>
 
                         |
-                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
 

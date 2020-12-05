@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,13 +11,13 @@ namespace Advertises
 {
     public class AddModel : PageModel
     {
+        private IBaseService<City> _cityService;
 
-        private ApplicationDbContext _context;
-
-        public AddModel(ApplicationDbContext context)
+        public AddModel(IBaseService<City> cityService)
         {
-            _context = context;
+            _cityService = cityService;
         }
+
         [BindProperty]
         public City MyCity
         {
@@ -31,8 +32,9 @@ namespace Advertises
         public void Onpost()
         {
             MyCity.CreateDate = DateTime.Now;
-            _context.Cities.Add(MyCity);
-            _context.SaveChanges();
+            //_context.Cities.Add(MyCity);
+            //_context.SaveChanges();
+            _cityService.Insert(MyCity);
         }
     }
 }

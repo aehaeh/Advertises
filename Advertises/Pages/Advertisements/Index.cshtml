@@ -8,14 +8,14 @@
 <h1>Index</h1>
 <p>
 
-    <a asp-page="addAdvertisement" class="btn-success">ایجاد</a>
+    <a asp-page="addAdvertisement" class=" btn btn-success">ایجاد</a>
 </p>
 <body >
     <div class=" row rtl">
         @if (Model.Advrtiseslist?.Count > 0)
         {
             <table class="table rtl">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th>
                             @Html.DisplayNameFor(model => model.Advrtiseslist[0].SelectedImage)
@@ -59,9 +59,9 @@
                             </td>
 
                             <td>
-                                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
                                 |
-                                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
 

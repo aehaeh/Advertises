@@ -7,11 +7,11 @@
 
 <h1>مدیریت محله </h1>
 <p>
-    <a asp-page="AddLocal">ایجاد محله جدید</a>
+    <a asp-page="AddLocal" class="btn btn-success">ایجاد محله جدید</a>
 </p>
 <body>
     <table class="table rtl">
-        <thead>
+        <thead  class="thead-dark">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Locations[0].Name)
@@ -31,7 +31,7 @@
                     <td>
 
                         |
-                        <a asp-page="./DeleteLocal" asp-route-id="@item.Id">Delete</a>
+                        <a asp-page="./DeleteLocal" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 

@@ -8,17 +8,20 @@
 <h1>IndexCities</h1>
 
 <p>
-    <a asp-page="Add">ایجاد یک شهر جدید</a>
+    <a asp-page="Add" class="btn btn-success" >ایجاد یک شهر جدید</a>
 </p>
 <body>
     <table class="table  rtl">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Cities[0].Name)
                 </th>
 
-                <th></th>
+                <th>
+                    ویرایش
+
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -30,9 +33,9 @@
                     </td>
 
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Edit" asp-route-id="@item.Id"class="btn btn-primary">Edit</a> |
                         |
-                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id"class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
 

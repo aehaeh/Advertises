@@ -22,11 +22,8 @@ namespace Advertises.Pages.Advertisements
         }
         [BindProperty]
         public Advertisement Myadvrtisment
-        {
-            get;
-            set;
-        }
-     
+        { set; get; }
+
 
         public void OnGet(long id)
         {

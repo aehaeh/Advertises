@@ -37,15 +37,9 @@ namespace Advertises
         public AdvertisementViewModel MyAdvertisement
         { set; get; }
         public long SelectedCity
-        {
-            get;
-            set;
-        }
+        { set; get; }
         public long SelectedCategory
-        {
-            get;
-            set;
-        }
+        { set; get; }
         public object InnerCategorie { get; private set; }
 
         public addAdvertisementModel(IAdvertismentService advertismentService, IBaseService<Category> categoryService, IBaseService<InnerCategory> innerCategoryService, IBaseService<Local> localService, IBaseService<City> cityService)

@@ -29,10 +29,7 @@ namespace Advertises.Pages.InnerCategories
 
         [BindProperty]
         public InnerCategory MyInnerCategory
-        {
-            set;
-            get;
-        }
+        { set; get; }
         public void PopulateCategoryDropDownList(IList<Category> categories,
            List<long> selectedCategory)
         {

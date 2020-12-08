@@ -9,18 +9,14 @@ namespace Advertises.Models
     public class City : BaseEntity
     {
         public string Name { set; get; }
-      
-       
-       
-        public bool IsActive
-        {
-            set;
-            get;
 
-        }
+
+
+        public bool IsActive
+        { set; get; }
 
         public List<Local> Locals { get; set; }
-       
-        
+
+
     }
 }

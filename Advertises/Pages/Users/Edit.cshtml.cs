@@ -24,16 +24,10 @@ namespace Advertises.Pages.Users
 
         [BindProperty]
         public User MyUser
-        {
-            get;
-            set;
-        }
-        
+        { set; get; }
+
         public Role MyRole
-        {
-            get;
-            set;
-        }
+        { set; get; }
 
         [BindProperty]
         public List<RoleVm> MyRoleVm { set; get; }

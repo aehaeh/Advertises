@@ -8,22 +8,12 @@ namespace Advertises.Models
     public class UserRole
     {
         public User User
-        {
-            get;set;
-        }
+        { set; get; }
         public long UserId
-        {
-            get;
-            set;
-        }
+        { set; get; }
         public Role Role
-        {
-            get;set;
-        }
+        { set; get; }
         public long RoleId
-        {
-            set;
-            get;
-        }
+        { set; get; }
     }
 }

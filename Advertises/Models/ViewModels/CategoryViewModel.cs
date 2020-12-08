@@ -4,18 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Advertises.Models
+namespace Advertises.Models.ViewModels
 {
-    public class Category : BaseEntity
+    public class CategoryViewModel
     {
-      
-        [Display(Name ="عنوان")]
+        public long Id { get; set; }
+
+        [Required(ErrorMessage = "وارد کردن عنوان ضروری  است ")]
         public string Title
         { set; get; }
 
 
         public ICollection<Advertisement> advertisements
         { set; get; }
-
     }
 }

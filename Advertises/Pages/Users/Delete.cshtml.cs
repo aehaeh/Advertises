@@ -20,11 +20,7 @@ namespace Advertises.Pages.Users
 
         [BindProperty]
         public User MyUser
-        {
-            get;
-            set;
-
-        }
+        { set; get; }
         public void OnGet(long id)
         {
             MyUser = _userService.Get(id);

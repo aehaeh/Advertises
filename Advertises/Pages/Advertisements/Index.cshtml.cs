@@ -18,16 +18,10 @@ namespace Advertises.Pages.Advertisements
             _context = context;
         }
         public string SelectetImage
-        {
-            set;
-            get;
-        }
+        { set; get; }
 
         public IList<Advertisement> Advrtiseslist
-        {
-            get;
-            set;
-        }
+        { set; get; }
         public void OnGet()
         {
 

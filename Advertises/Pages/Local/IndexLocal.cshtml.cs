@@ -22,10 +22,7 @@ namespace Advertises
 
         [BindProperty]
         public IList<Local> Locations
-        {
-            get;
-            set;
-        }
+        { set; get; }
         public DbSet<Advertisement> Advertisementlist { get; private set; }
         public void OnGet()
         {

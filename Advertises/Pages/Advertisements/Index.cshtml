@@ -36,10 +36,10 @@
                     @foreach (var item in Model.Advrtiseslist)
                     {
                         <tr>
-                            <td>
-                                <div>
-                                    <img class="td_Image" src="@item.SelectedImage" />
-                                </div>
+                            <td class="w-25">
+                                
+                                    <img class="w-25 " src="@item.SelectedImage" />
+                                
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Title)

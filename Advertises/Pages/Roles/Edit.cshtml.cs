@@ -20,10 +20,7 @@ namespace Advertises.Pages.Roles
 
         [BindProperty]
         public Role MyRole
-        {
-            get;
-            set;
-        }
+        { set; get; }
         public void OnGet(long id)
         {
             MyRole =_roleService.Get(id); 

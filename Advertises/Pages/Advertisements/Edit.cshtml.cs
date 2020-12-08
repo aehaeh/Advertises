@@ -25,17 +25,11 @@ namespace Advertises
         public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
 
 
-        [BindProperty]
-        public Advertisement MyAdvertisement
-        {
-            get;
-            set;
-        }
+        [BindProperty(SupportsGet =true)]
+        public AdvertisementViewModel MyAdvertisement
+        { set; get; }
         public IList<Advertisement> Advertisements
-        {
-            get;
-            set;
-        }
+        { set; get; }
         [BindProperty]
         public List<long> SelectedImagesId { set; get; }
 
@@ -46,9 +40,34 @@ namespace Advertises
             //var categories = _context.Categories.ToList();
             var categories = _categoryService.GetAll().ToList();
             PopulateCategoryDropDownList(categories, null);
-            MyAdvertisement = _advertismentService.GetAll()
+
+
+
+            var localAdvertisement =
+                _advertismentService.GetAll()
                   .Include(x => x.Images)
+
                  .FirstOrDefault(x => x.Id == id);
+
+            MyAdvertisement.Id = localAdvertisement.Id;
+            MyAdvertisement.Category = localAdvertisement.Category;
+            MyAdvertisement.CreateDate = localAdvertisement.CreateDate;
+            MyAdvertisement.Images = localAdvertisement.Images;
+            MyAdvertisement.InnerCategory = localAdvertisement.InnerCategory;
+            MyAdvertisement.InnerCategoryId = localAdvertisement.InnerCategoryId;
+            MyAdvertisement.IsActive = localAdvertisement.IsActive;
+            MyAdvertisement.Local = localAdvertisement.Local;
+            MyAdvertisement.LocalId = localAdvertisement.LocalId;
+            MyAdvertisement.price = localAdvertisement.price;
+            MyAdvertisement.SelectedImage = localAdvertisement.SelectedImage;
+            MyAdvertisement.Title = localAdvertisement.Title;
+            MyAdvertisement.UpdatedDate = localAdvertisement.UpdatedDate;
+
+            
+
+
+
+
 
 
 
@@ -62,21 +81,32 @@ namespace Advertises
                 ttt.Images.Remove(ttt.Images.FirstOrDefault(x => x.Id == imageId));
             }
 
+
             ttt.Title = MyAdvertisement.Title;
             ttt.Description = MyAdvertisement.Description;
             ttt.IsActive = MyAdvertisement.IsActive;
             ttt.InnerCategoryId = MyAdvertisement.InnerCategoryId;
+            
+          
+            ttt.Id = MyAdvertisement.Id;
+            ttt.Images = MyAdvertisement.Images;
+            ttt.InnerCategory = MyAdvertisement.InnerCategory;
+            ttt.Local = MyAdvertisement.Local;
+            ttt.LocalId = MyAdvertisement.LocalId;
+            ttt.UpdatedDate = MyAdvertisement.UpdatedDate;
+            ttt.CreateDate = MyAdvertisement.CreateDate;
+            ttt.Description = MyAdvertisement.Description;
 
-
-           // _context.Advertisements.Update(ttt);
-           // _context.SaveChanges();
+            // _context.Advertisements.Update(ttt);
+            // _context.SaveChanges();
             _advertismentService.Update(ttt);
-            MyAdvertisement = _advertismentService.GetAll()
-                 .Include(x => x.Images)
-                .FirstOrDefault(x => x.Id == MyAdvertisement.Id);
 
+           
             var categories = _categoryService.GetAll().ToList();
             PopulateCategoryDropDownList(categories, null);
+
+
+            
 
         }
         public void PopulateCategoryDropDownList(IList<Category> categories,

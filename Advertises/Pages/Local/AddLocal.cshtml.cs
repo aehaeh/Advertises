@@ -24,10 +24,7 @@ namespace Advertises
 
         [BindProperty]
         public Local MyLocal
-        {
-            set;
-            get;
-        }
+        { set; get; }
 
         public void PopulateCityDropDownList(IList<City> cities,
            List<long> selectedCity)

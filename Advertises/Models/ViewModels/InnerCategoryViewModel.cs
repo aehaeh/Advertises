@@ -4,15 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Advertises.Models
+namespace Advertises.Models.ViewModels
 {
-    public class InnerCategory:BaseEntity
+    public class InnerCategoryViewModel
     {
-       
-
+        public long Id { get; set; }
+        [Required(ErrorMessage = "وارد کردن عنوان دسته بندی   ضروری  است ")]
         public string Title
-        {set;get;}
-      
+        { set; get; }
+
         /*  public Category Category
            {
                set;
@@ -20,11 +20,8 @@ namespace Advertises.Models
            }
            */
         public long CategoryId
-            { set; get;}
+        { set; get; }
         public List<Advertisement> Advertisements
-        {get;set;}
-     
+        { get; set; }
     }
-
 }
-

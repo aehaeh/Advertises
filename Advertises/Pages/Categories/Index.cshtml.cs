@@ -21,12 +21,9 @@ namespace Advertises.Pages.Categories
             _categoryService = categoryService;
         }
         [BindProperty]
-        public IList<Category> Categories 
-        {
-            get;
-            set; 
-        }
-      
+        public IList<Category> Categories
+        { set; get; }
+
         public DbSet<Advertisement> Advertisementlist { get; private set; }
 
         public void OnGet()

@@ -12,28 +12,15 @@ namespace Advertises.Models
         public long Id { get; set; }
         [Required(ErrorMessage = "وارد کردن عنوان ضروری  است ")]
         public string Title
-        {
-            set;
-            get;
-        }
+        { set; get; }
         public string Description
-        {
-            set;
-            get;
-        }
+        { set; get; }
 
         public decimal price
-        {
-            get;
-            set;
+        { set; get; }
 
-        }
-        
         public Category Category
-        {
-            set;
-            get;
-        }
+        { set; get; }
         //public long CategoryId
         //{
         //    set;
@@ -41,48 +28,28 @@ namespace Advertises.Models
         //}
 
         public bool IsActive
-        {
-            set;
-            get;
+        { set; get; }
 
-        }
 
-        
         public Local Local
-        {
-            set;
-            get;
-        }
+        { set; get; }
 
         [Required(ErrorMessage = "لطفا شهر و محله خود را وارد نمائید ")]
         public long LocalId
-        {
-            set;
-            get;
-        }
+        { set; get; }
 
-        
+
         public InnerCategory InnerCategory
-        {
-            get;
-            set;
-        }
+        { set; get; }
 
         [Required(ErrorMessage = "لطفا دسته بندی مورد نظر را انتخاب کنید ")]
         public long InnerCategoryId
-        {
-            set;
-            get;
-        }
+        { set; get; }
         public List<Image> Images { get; set; }
 
         [NotMapped]
         public string SelectedImage
-        {
-            get;
-            set;
-
-        }
+        { set; get; }
         public DateTime? UpdatedDate { set; get; }
 
         public DateTime CreateDate { set; get; }

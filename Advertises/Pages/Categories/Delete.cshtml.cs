@@ -21,10 +21,7 @@ namespace Advertises
         [BindProperty]
 
         public Category MyCategory
-        {
-            set;
-            get;
-        }
+        { set; get; }
         public void OnGet(long id)
         {
             //MyCategory= _context.Categories.SingleOrDefault(m => m.Id == id);

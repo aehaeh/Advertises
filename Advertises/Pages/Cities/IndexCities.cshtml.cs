@@ -24,10 +24,7 @@ namespace Advertises
        
         [BindProperty]
         public IList<City> Cities
-        {
-            get;
-            set;
-        }
+        { set; get; }
         public DbSet<Advertisement> Advertisementlist { get; private set; }
 
         public void OnGet()

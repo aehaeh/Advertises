@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Advertises.Models
+namespace Advertises.Models.ViewModels
 {
-    public class Image :BaseEntity
+    public class ImageViewModel
     {
-       
+        public long Id { get; set; }
         public long AdvertismentId
-        {set;get;}
+        { set; get; }
         public byte[] File
         { set; get; }
         public Advertisement Advertisment
         { set; get; }
     }
 }
+

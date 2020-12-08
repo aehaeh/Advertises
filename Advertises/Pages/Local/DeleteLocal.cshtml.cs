@@ -20,10 +20,7 @@ namespace Advertises
 
         [BindProperty]
         public Local MyLocal
-        {
-            set;
-            get;
-        }
+        { set; get; }
         public void OnGet(long id)
         {
             MyLocal = _localService.Get(id);

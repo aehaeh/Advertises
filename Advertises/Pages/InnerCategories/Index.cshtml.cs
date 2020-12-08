@@ -22,10 +22,7 @@ namespace Advertises.Pages.InnerCategories
        
         [BindProperty]
         public IList<InnerCategory> InnerCategories
-        {
-            get;
-            set;
-        }
+        { set; get; }
         public DbSet<Advertisement> Advertisementlist { get; private set; }
         public void OnGet()
         {

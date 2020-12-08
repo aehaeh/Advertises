@@ -22,11 +22,8 @@ namespace Advertises.Pages.Roles
 
         [BindProperty]
         public Role MyRole
-        {
-            set;
-            get;
-        }
-       
+        { set; get; }
+
 
         public void OnGet()
         {

@@ -19,9 +19,7 @@ namespace Advertises.Pages.Users
         }
 
         public List<User> Users
-        {
-            set;get;
-        }
+        { set; get; }
         public void OnGet()
         {
             Users = _userService.GetAll().ToList();

@@ -20,10 +20,7 @@ namespace Advertises.Pages.Roles
         }
 
         public List<Role> Roles
-        {
-            set;
-            get;
-        }
+        { set; get; }
 
         public void OnGet()
         {

@@ -8,11 +8,8 @@ namespace Advertises.Models
     public class Role : BaseEntity
     {
         public string RoleName
-        {
-            get;
-            set;
-        }
-       
+        { set; get; }
+
         public List<UserRole> UserRoles { get; set; }
     }
 }

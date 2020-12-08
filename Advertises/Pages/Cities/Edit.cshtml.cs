@@ -22,10 +22,7 @@ namespace Advertises.Pages.Cities
        
         [BindProperty]
         public City MyCity
-        {
-            set;
-            get;
-        }
+        { set; get; }
 
 
         public void OnGet(long id)

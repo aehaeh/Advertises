@@ -22,10 +22,7 @@ namespace Advertises.Pages.InnerCategories
         
         [BindProperty]
         public InnerCategory MyInnerCategory
-        {
-            set;
-            get;
-        }
+        { set; get; }
         public void OnGet(long id)
         {
             MyInnerCategory = _innerCategoryService.Get(id);

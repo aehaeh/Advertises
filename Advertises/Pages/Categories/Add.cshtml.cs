@@ -42,6 +42,8 @@ namespace Advertises
             persistCtegory.Title = MyCategory.Title;
             persistCtegory.advertisements = MyCategory.advertisements;
             persistCtegory.Id = MyCategory.Id;
+            persistCtegory.UpdatedDate = MyCategory.UpdatedDate;
+            persistCtegory.CreateDate = MyCategory.CreateDate;
             _categoryService.Insert(persistCtegory);
         }
     }

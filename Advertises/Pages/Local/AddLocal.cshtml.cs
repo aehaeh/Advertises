@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Models.ViewModels;
 using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,7 +24,7 @@ namespace Advertises
         }
 
         [BindProperty]
-        public Local MyLocal
+        public LocalViewModel MyLocal
         { set; get; }
 
         public void PopulateCityDropDownList(IList<City> cities,
@@ -47,7 +48,20 @@ namespace Advertises
         public void Onpost()
         {
             MyLocal.CreateDate = DateTime.Now;
-            _localService.Insert(MyLocal);
+
+
+
+            Local persistLocal = new Local();
+            persistLocal.Advertisements = MyLocal.Advertisements;
+            persistLocal.City = MyLocal.City;
+            persistLocal.CityId = MyLocal.CityId;
+            persistLocal.CreateDate = MyLocal.CreateDate;
+            persistLocal.Id = MyLocal.Id;
+            persistLocal.IsActive = MyLocal.IsActive;
+            persistLocal.Name = MyLocal.Name;
+            persistLocal.UpdatedDate = MyLocal.UpdatedDate;
+            
+            _localService.Insert(persistLocal);
             
         }
     }

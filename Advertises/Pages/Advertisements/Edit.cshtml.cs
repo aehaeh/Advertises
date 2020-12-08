@@ -46,8 +46,7 @@ namespace Advertises
             var localAdvertisement =
                 _advertismentService.GetAll()
                   .Include(x => x.Images)
-
-                 .FirstOrDefault(x => x.Id == id);
+                  .FirstOrDefault(x => x.Id == id);
 
             MyAdvertisement.Id = localAdvertisement.Id;
             MyAdvertisement.Category = localAdvertisement.Category;

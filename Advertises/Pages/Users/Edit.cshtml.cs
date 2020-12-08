@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Models.ViewModels;
 using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,7 +24,7 @@ namespace Advertises.Pages.Users
         }
 
         [BindProperty]
-        public User MyUser
+        public UserViewModel MyUser
         { set; get; }
 
         public Role MyRole
@@ -43,9 +44,21 @@ namespace Advertises.Pages.Users
         //}
         public void OnGet(long id)
         {
-            MyUser = _userService.GetAll()
+            var localUser = _userService.GetAll()
                 .Include(x=>x.UserRoles)
                 .FirstOrDefault(x => x.Id == id);
+            MyUser.CreateDate = localUser.CreateDate;
+            MyUser.FirstName = localUser.FirstName;
+            MyUser.Id = localUser.Id;
+            MyUser.LasttName = localUser.LasttName;
+            MyUser.Password = localUser.Password;
+            MyUser.PhoneNumber = localUser.PhoneNumber;
+            MyUser.UpdatedDate = localUser.UpdatedDate;
+            MyUser.UserName = localUser.UserName;
+            MyUser.UserRoles = localUser.UserRoles;
+
+
+
 
             MyRoleVm = _roleService.GetAll().Select(v => new RoleVm()
             {
@@ -75,6 +88,18 @@ namespace Advertises.Pages.Users
                     }
                 );
             }
+
+            ttt.CreateDate = MyUser.CreateDate;
+            ttt.FirstName = MyUser.FirstName;
+            ttt.Id = MyUser.Id;
+            ttt.LasttName = MyUser.LasttName;
+            ttt.Password = MyUser.Password;
+            ttt.PhoneNumber = MyUser.PhoneNumber;
+            ttt.UpdatedDate = MyUser.UpdatedDate;
+            ttt.UserName = MyUser.UserName;
+            ttt.UserRoles = MyUser.UserRoles;
+
+
 
             _userService.Update(ttt);
             

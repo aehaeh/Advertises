@@ -23,5 +23,8 @@ namespace Advertises.Models.ViewModels
         { set; get; }
         public List<Advertisement> Advertisements
         { get; set; }
+        public DateTime? UpdatedDate { set; get; }
+
+        public DateTime CreateDate { set; get; }
     }
 }

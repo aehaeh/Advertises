@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Models.ViewModels;
 using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,7 +22,7 @@ namespace Advertises.Pages.Roles
         }
 
         [BindProperty]
-        public Role MyRole
+        public RoleViewModel MyRole
         { set; get; }
 
 
@@ -31,7 +32,13 @@ namespace Advertises.Pages.Roles
         }
         public void OnPost()
         {
-            _roleService.Insert(MyRole);
+            Role persistRole = new Role();
+            persistRole.CreateDate = MyRole.CreateDate;
+            persistRole.Id = MyRole.Id;
+            persistRole.RoleName = MyRole.RoleName;
+            persistRole.UpdatedDate = MyRole.UpdatedDate;
+            persistRole.UserRoles = MyRole.UserRoles;
+            _roleService.Insert(persistRole);
             
         }
     }

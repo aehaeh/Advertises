@@ -21,5 +21,8 @@ namespace Advertises.Models.ViewModels
         public string Password { set; get; }
 
         public List<UserRole> UserRoles { set; get; }
+        public DateTime? UpdatedDate { set; get; }
+
+        public DateTime CreateDate { set; get; }
     }
 }

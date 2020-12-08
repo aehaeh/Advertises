@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Models.ViewModels;
 using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,12 +22,18 @@ namespace Advertises.Pages.InnerCategories
         }
 
         [BindProperty]
-        public InnerCategory MyInnerCategory
+        public InnerCategoryViewModel MyInnerCategory
         { set; get; }
 
         public void OnGet(long id)
         {
-            MyInnerCategory = _innerCategoryService.Get( id);
+            var localInnercategory = _innerCategoryService.Get( id);
+            MyInnerCategory.Id = localInnercategory.Id;
+            MyInnerCategory.Advertisements = localInnercategory.Advertisements;
+            MyInnerCategory.CategoryId = localInnercategory.CategoryId;
+            MyInnerCategory.CreateDate = localInnercategory.CreateDate;
+            MyInnerCategory.Title = localInnercategory.Title;
+            MyInnerCategory.UpdatedDate = localInnercategory.UpdatedDate;
         }
         public void Onpost()
         {
@@ -34,6 +41,13 @@ namespace Advertises.Pages.InnerCategories
             //tt.Title = MyInnerCategory.Title;
             var tt = _innerCategoryService.Get(MyInnerCategory.Id);
             tt.Title = MyInnerCategory.Title;
+            tt.Advertisements = MyInnerCategory.Advertisements;
+            tt.CategoryId = MyInnerCategory.CategoryId;
+            tt.CreateDate = MyInnerCategory.CreateDate;
+            tt.Id = MyInnerCategory.Id;
+            tt.UpdatedDate = MyInnerCategory.UpdatedDate;
+            
+            
 
             _innerCategoryService.Update(tt);
             

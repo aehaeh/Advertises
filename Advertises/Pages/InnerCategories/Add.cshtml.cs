@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Advertises.Models;
+using Advertises.Models.ViewModels;
 using Advertises.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -28,7 +29,7 @@ namespace Advertises.Pages.InnerCategories
         }
 
         [BindProperty]
-        public InnerCategory MyInnerCategory
+        public InnerCategoryViewModel MyInnerCategory
         { set; get; }
         public void PopulateCategoryDropDownList(IList<Category> categories,
            List<long> selectedCategory)
@@ -53,8 +54,16 @@ namespace Advertises.Pages.InnerCategories
         public void Onpost()
         {
 
+            MyInnerCategory.CreateDate = DateTime.Now;
+            InnerCategory PersistInnerCategory = new InnerCategory();
+            PersistInnerCategory.Advertisements = MyInnerCategory.Advertisements;
+            PersistInnerCategory.CategoryId = MyInnerCategory.CategoryId;
+            PersistInnerCategory.CreateDate = MyInnerCategory.CreateDate;
+            PersistInnerCategory.Id = MyInnerCategory.Id;
+            PersistInnerCategory.Title = MyInnerCategory.Title;
+            PersistInnerCategory.UpdatedDate = MyInnerCategory.UpdatedDate;
 
-            _innerCategoryService.Insert(MyInnerCategory);
+            _innerCategoryService.Insert(PersistInnerCategory);
         }
 
     }

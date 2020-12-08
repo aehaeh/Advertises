@@ -44,15 +44,13 @@
                 @*@foreach (Image img in Model.MyAdvertisement.Images)*@
                 @for (int i = 0; i < Model.MyAdvertisement.Images.Count; i++)
                 {
-                    <div class="advertise_img">
-
-                        <img class="td_Image" src="@("data:image/png;base64," + Convert.ToBase64String(Model.MyAdvertisement.Images[i].File))" />
-                        <input type="hidden" asp-for="MyAdvertisement.Images[i].Id" />
-                        <div>
-                            <span image-id="@Model.MyAdvertisement.Images[i].Id"> حذف </span>
-                        </div>
-
-                    </div>
+                   
+                            <img class="w-50" src="@("data:image/png;base64," + Convert.ToBase64String(Model.MyAdvertisement.Images[i].File))" />
+                            <input type="hidden" asp-for="MyAdvertisement.Images[i].Id" />
+                            <div>
+                                <span image-id="@Model.MyAdvertisement.Images[i].Id"> حذف </span>
+                            </div>
+                        
                 }
             </div>
             <div>

@@ -17,5 +17,8 @@ namespace Advertises.Models.ViewModels
 
         public ICollection<Advertisement> advertisements
         { set; get; }
+        public DateTime? UpdatedDate { set; get; }
+
+        public DateTime CreateDate { set; get; }
     }
 }

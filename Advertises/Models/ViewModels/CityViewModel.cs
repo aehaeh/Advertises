@@ -16,6 +16,9 @@ namespace Advertises.Models.ViewModels
 
         public bool IsActive
         { set; get; }
+        public DateTime? UpdatedDate { set; get; }
+
+        public DateTime CreateDate { set; get; }
 
         public List<Local> Locals { get; set; }
     }

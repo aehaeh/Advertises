@@ -37,7 +37,8 @@ namespace Advertises
             //_context.SaveChanges();
 
 
-
+            MyCategory.CreateDate = DateTime.Now;
+            
             Category persistCtegory = new Category();
             persistCtegory.Title = MyCategory.Title;
             persistCtegory.advertisements = MyCategory.advertisements;

@@ -13,6 +13,7 @@
         <form method="post" class="col-md-8 m-auto justify-content-center ">
             <div>
                 <input type="text" asp-for="MyInnerCategory.Title" placeholder="" class="form-control mb-2" />
+                <span asp-validation-for="MyInnerCategory.Title"></span>
             </div>
             <div>
                 <select asp-items="Model.ListCategories" asp-for="MyInnerCategory.CategoryId" class="form-control mb-2"></select>

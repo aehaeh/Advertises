@@ -12,7 +12,8 @@
             <form method="post" class="col-md-8 m-auto justify-content-center shadow p-3 mb-5 bg-white rounded text-center">
                 <h1>ایجاد شهر جدید</h1>
                 <div>
-                    <input type="text" asp-for="MyCity.Name" placeholder=""  class="form-control"/>
+                    <input type="text" asp-for="MyCity.Name" placeholder="" class="form-control" />
+                    <span asp-validation-for="MyCity.Name"></span>
                 </div>
 
 

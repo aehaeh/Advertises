@@ -13,6 +13,7 @@
         <form method="post" class="col-md-8 m-auto justify-content-center text-center">
             <div>
                 <input type="text" asp-for="MyRole.RoleName" placeholder="" class="form-control mb-2" />
+                <span asp-validation-for="MyRole.RoleName"></span>
             </div>
             <div>
                 @*<select asp-items="Model.ListRoles" asp-for="MyRole.RoleId"></select>*@

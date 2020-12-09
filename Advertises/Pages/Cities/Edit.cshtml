@@ -11,7 +11,8 @@
         <form method="post" class="col-md-8 m-auto justify-content-center text-center">
             <div>
                 <label>عنوان</label>
-                <input type="text" asp-for="MyCity.Name" placeholder=""  class="form-control"/>
+                <input type="text" asp-for="MyCity.Name" placeholder="" class="form-control" />
+                <span asp-validation-for="MyCity.Name"></span>
 
             </div>
             <div>

@@ -9,7 +9,7 @@ namespace Advertises.Models
     public class Category : BaseEntity
     {
       
-        [Display(Name ="عنوان")]
+        //[Display(Name ="عنوان")]
         public string Title
         { set; get; }
 

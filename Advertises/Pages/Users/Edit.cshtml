@@ -12,7 +12,8 @@
     <form method="post" class="col-md-8 m-auto justify-content-center text-center">
         <div>
             <label>عنوان</label>
-            <input type="text" asp-for="MyUser.UserName" placeholder="" class="form-control"/>
+            <input type="text" asp-for="MyUser.UserName" placeholder="" class="form-control" />
+            <span asp-validation-for="MyUser.UserName"></span>
 
         </div>
         <div>

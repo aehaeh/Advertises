@@ -37,13 +37,17 @@ namespace Advertises.Pages.Cities
             MyCity.Name = localCity.Name;
             MyCity.UpdatedDate = localCity.UpdatedDate;
         }
-        public void Onpost()
+        public IActionResult Onpost()
         {
             //var tt = _context.Cities.FirstOrDefault(x => x.Id == MyCity.Id);
             //tt.Name = MyCity.Name;
 
             //_context.Cities.Update(tt);
             //_context.SaveChanges();
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
             var tt = _cityService.Get(MyCity.Id);
             tt.CreateDate = MyCity.CreateDate;
             tt.Name = MyCity.Name;
@@ -55,7 +59,8 @@ namespace Advertises.Pages.Cities
 
 
             _cityService.Update(tt);
-          
+            return Page();
+
         }
     }
 }

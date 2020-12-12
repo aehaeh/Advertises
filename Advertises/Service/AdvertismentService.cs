@@ -43,7 +43,7 @@ namespace Advertises.Service
         public async Task<Advertisement> Update(Advertisement advertisement)
         {
             _context.Advertisements.Update(advertisement);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return advertisement;
         }
     }

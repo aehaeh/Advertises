@@ -68,7 +68,7 @@ namespace Advertises.Pages.Users
             }).ToList();
             
         }
-        public void Onpost()
+        public IActionResult Onpost()
         {
             var ttt = _userService.GetAll()
                 .Include(x => x.UserRoles)
@@ -88,6 +88,10 @@ namespace Advertises.Pages.Users
                     }
                 );
             }
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
 
             ttt.CreateDate = MyUser.CreateDate;
             ttt.FirstName = MyUser.FirstName;
@@ -102,14 +106,15 @@ namespace Advertises.Pages.Users
 
 
             _userService.Update(ttt);
-            
+            return Page();
+
             //var tt = _context.Users.FirstOrDefault(x => x.UserId == MyUser.UserId);
             //tt.UserName = MyUser.UserName;
 
 
 
-           // _context.Users.Update(ttt);
-           // _context.SaveChanges();
+            // _context.Users.Update(ttt);
+            // _context.SaveChanges();
         }
 
 

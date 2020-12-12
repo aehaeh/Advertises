@@ -11,9 +11,8 @@ namespace Advertises.Models.ViewModels
         public long Id { get; set; }
 
         
-        [Required(ErrorMessage = "وارد کردن عنوان ضروری  است ")]
-        public string Title
-        { set; get; }
+        [Required(ErrorMessage = "وارد کردن عنوان ضروری  است ")]        
+        public string Title { set; get; }
 
 
         public ICollection<Advertisement> advertisements

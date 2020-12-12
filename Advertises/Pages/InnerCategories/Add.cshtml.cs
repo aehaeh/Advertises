@@ -51,8 +51,12 @@ namespace Advertises.Pages.InnerCategories
             var categories = _categoryService.GetAll().ToList();
             PopulateCategoryDropDownList(categories, null);
         }
-        public void Onpost()
+        public IActionResult Onpost()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
             MyInnerCategory.CreateDate = DateTime.Now;
             InnerCategory PersistInnerCategory = new InnerCategory();
@@ -64,6 +68,7 @@ namespace Advertises.Pages.InnerCategories
             PersistInnerCategory.UpdatedDate = MyInnerCategory.UpdatedDate;
 
             _innerCategoryService.Insert(PersistInnerCategory);
+            return Page();
         }
 
     }

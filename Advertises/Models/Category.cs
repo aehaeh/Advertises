@@ -10,8 +10,9 @@ namespace Advertises.Models
     {
       
         //[Display(Name ="عنوان")]
-        public string Title
-        { set; get; }
+
+            
+        public string Title{ set; get; }
 
 
         public ICollection<Advertisement> advertisements

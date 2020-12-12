@@ -27,8 +27,13 @@ namespace Advertises
         {
 
         }
-        public void Onpost()
+        public IActionResult Onpost()
         {
+
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
             MyCity.CreateDate = DateTime.Now;
             MyCity.IsActive = false;
             //_context.Cities.Add(MyCity);
@@ -43,6 +48,7 @@ namespace Advertises
             persistCity.CreateDate = MyCity.CreateDate;
             persistCity.IsActive = MyCity.IsActive;
             _cityService.Insert(persistCity);
+            return Page();
 
         }
     }

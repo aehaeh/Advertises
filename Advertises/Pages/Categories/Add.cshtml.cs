@@ -23,18 +23,23 @@ namespace Advertises
 
 
         [BindProperty]
-        public CategoryViewModel MyCategory
-        { set; get; }
+        public CategoryViewModel MyCategory{ set; get; }
 
         public void OnGet()
         {
 
         }
-        public void OnPost()
+        public IActionResult OnPost()
         {
             //MyCategory.CreateDate = DateTime.Now;
             //_context.Categories.Add(MyCategory);
             //_context.SaveChanges();
+
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
+
 
 
             MyCategory.CreateDate = DateTime.Now;
@@ -46,6 +51,8 @@ namespace Advertises
             persistCtegory.UpdatedDate = MyCategory.UpdatedDate;
             persistCtegory.CreateDate = MyCategory.CreateDate;
             _categoryService.Insert(persistCtegory);
+
+            return Page();
         }
     }
 }

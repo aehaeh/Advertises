@@ -31,26 +31,41 @@
                 <input type="hidden" asp-for="MyAdvertisement.Id" />
             </div>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" asp-for="MyAdvertisement.IsActive" class="custom-control-input mb-1 " id="customControlValidation1" required/>
+                <input type="checkbox" asp-for="MyAdvertisement.IsActive" class="custom-control-input mb-1 " id="customControlValidation1" required />
                 <label class="custom-control-label" for="customControlValidation1">فعال </label>
                 <div class="invalid-feedback">برای فعال نمودن تیک را فعال کنید</div>
 
             </div>
             <div>
-                <select asp-items="Model.ListCategories" asp-for="MyAdvertisement.InnerCategoryId"  class="form-control mb-2 w-100"></select>
+                <select id="categoryDp" asp-items="Model.ListCategories" asp-for="SelectedCategory" onchange="categoryChange()" class="custom-select mb-2"></select>
+
             </div>
+            <div>
+                <select id="cityDp" asp-items="Model.ListCities" asp-for="SelectedCity" onchange="cityChange()" class="custom-select mb-2"></select>
+            </div>
+            <div>
+                <select id="localDp" asp-for="MyAdvertisement.LocalId" class="custom-select mb-2"></select>
+                <span asp-validation-for="MyAdvertisement.LocalId"></span>
+            </div>
+            <div>
+                <select id="innercategoryDp" asp-for="MyAdvertisement.InnerCategoryId" class="custom-select mb-2"></select>
+                <span asp-validation-for="MyAdvertisement.InnerCategoryId"></span>
+            </div>
+
+
+
             <div>
 
                 @*@foreach (Image img in Model.MyAdvertisement.Images)*@
                 @for (int i = 0; i < Model.MyAdvertisement.Images.Count; i++)
                 {
-                   
-                            <img class="w-50" src="@("data:image/png;base64," + Convert.ToBase64String(Model.MyAdvertisement.Images[i].File))" />
-                            <input type="hidden" asp-for="MyAdvertisement.Images[i].Id" />
-                            <div>
-                                <span image-id="@Model.MyAdvertisement.Images[i].Id"> حذف </span>
-                            </div>
-                        
+
+                    <img class="w-50" src="@("data:image/png;base64," + Convert.ToBase64String(Model.MyAdvertisement.Images[i].File))" />
+                    <input type="hidden" asp-for="MyAdvertisement.Images[i].Id" />
+                    <div>
+                        <span image-id="@Model.MyAdvertisement.Images[i].Id"> حذف </span>
+                    </div>
+
                 }
             </div>
             <div>
@@ -68,4 +83,44 @@
 
     <script src="~/js/Edit.js"></script>
 
+    <script>
+
+
+        function categoryChange() {
+            var bb = $('#categoryDp').val();
+
+            $.ajax({
+                type: "GET",
+                url: "/Advertisements/addAdvertisement?handler=ChangeCategory&categoryid=" + bb,
+                success: function (data) {
+                    var s = '';
+                    for (var i = 0; i < data.length; i++) {
+
+                        s += '<option value="' + data[i].id + '">' + data[i].title + '</option>';
+
+                    }
+                    $("#innercategoryDp").html(s);
+                }
+            });
+        }
+
+        function cityChange() {
+            var aa = $('#cityDp').val();
+
+            $.ajax({
+                type: "GET",
+                url: "/Advertisements/addAdvertisement?handler=ChangeCity&cityid=" + aa,
+                success: function (data) {
+                    var s = '';
+                    for (var i = 0; i < data.length; i++) {
+
+                        s += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+
+                    }
+                    $("#localDp").html(s);
+                }
+            });
+        }
+
+    </script>
 }

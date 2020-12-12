@@ -35,8 +35,12 @@ namespace Advertises.Pages.InnerCategories
             MyInnerCategory.Title = localInnercategory.Title;
             MyInnerCategory.UpdatedDate = localInnercategory.UpdatedDate;
         }
-        public void Onpost()
+        public IActionResult Onpost()
         {
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
             //var tt = _context.InnerCategories.FirstOrDefault(x => x.Id == MyInnerCategory.Id);
             //tt.Title = MyInnerCategory.Title;
             var tt = _innerCategoryService.Get(MyInnerCategory.Id);
@@ -50,7 +54,8 @@ namespace Advertises.Pages.InnerCategories
             
 
             _innerCategoryService.Update(tt);
-            
+            return Page();
+
         }
     }
 }

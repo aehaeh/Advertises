@@ -30,8 +30,12 @@ namespace Advertises.Pages.Roles
         {
            
         }
-        public void OnPost()
+        public IActionResult OnPost()
         {
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
             Role persistRole = new Role();
             persistRole.CreateDate = MyRole.CreateDate;
             persistRole.Id = MyRole.Id;
@@ -39,6 +43,8 @@ namespace Advertises.Pages.Roles
             persistRole.UpdatedDate = MyRole.UpdatedDate;
             persistRole.UserRoles = MyRole.UserRoles;
             _roleService.Insert(persistRole);
+
+            return Page();
             
         }
     }

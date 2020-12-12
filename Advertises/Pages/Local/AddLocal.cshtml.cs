@@ -45,8 +45,13 @@ namespace Advertises
             var cities = _cityService.GetAll().ToList();
             PopulateCityDropDownList(cities, null);
         }
-        public void Onpost()
+        public IActionResult Onpost()
         {
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             MyLocal.CreateDate = DateTime.Now;
 
 
@@ -62,7 +67,9 @@ namespace Advertises
             persistLocal.UpdatedDate = MyLocal.UpdatedDate;
             
             _localService.Insert(persistLocal);
-            
+
+            return Page();
+
         }
     }
 }

@@ -15,15 +15,28 @@ namespace Advertises
     {
         private IAdvertismentService _advertismentService;
         private IBaseService<Category> _categoryService;
+        private IBaseService<City> _cityService;
+        private IBaseService<Local> _localService;
+        private IBaseService<InnerCategory> _innerCategoryService;
 
-        public EditModel(IAdvertismentService advertismentService, IBaseService<Category> categoryService)
+        public EditModel(IAdvertismentService advertismentService, IBaseService<Category> categoryService,IBaseService<City> cityService, IBaseService<Local> localService,IBaseService<InnerCategory> innerCategoryService)
         {
             _advertismentService = advertismentService;
             _categoryService = categoryService;
+            _cityService = cityService;
+            _localService = localService;
+            _innerCategoryService = innerCategoryService;
         }
 
         public List<SelectListItem> ListCategories { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> ListCities { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> ListLocations { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> ListInnerCategories { get; set; } = new List<SelectListItem>();
 
+        public long SelectedCity
+        { set; get; }
+        public long SelectedCategory
+        { set; get; }
 
         [BindProperty(SupportsGet =true)]
         public AdvertisementViewModel MyAdvertisement
@@ -40,8 +53,12 @@ namespace Advertises
             //var categories = _context.Categories.ToList();
             var categories = _categoryService.GetAll().ToList();
             PopulateCategoryDropDownList(categories, null);
-
-
+            var cities = _cityService.GetAll().ToList();
+            PopulateCityDropDownList(cities, null);
+            var locations = _localService.GetAll().ToList();
+            PopulateLocalDropDownList(locations,null);
+            var innerCategories = _innerCategoryService.GetAll().ToList();
+            PopulateInnerCategoryDropDownList(innerCategories,null);
 
             var localAdvertisement =
                 _advertismentService.GetAll()
@@ -61,52 +78,37 @@ namespace Advertises
             MyAdvertisement.SelectedImage = localAdvertisement.SelectedImage;
             MyAdvertisement.Title = localAdvertisement.Title;
             MyAdvertisement.UpdatedDate = localAdvertisement.UpdatedDate;
-
-            
-
-
-
-
-
-
+          
 
         }
-        public void OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
-            var ttt = _advertismentService.GetAll().Include(x => x.Images).FirstOrDefault(x => x.Id == MyAdvertisement.Id);
+            var persistAdvertisement = _advertismentService.GetAll().Include(x => x.Images).FirstOrDefault(x => x.Id == MyAdvertisement.Id);
 
             foreach (long imageId in SelectedImagesId)
             {
-                ttt.Images.Remove(ttt.Images.FirstOrDefault(x => x.Id == imageId));
+                persistAdvertisement.Images.Remove(persistAdvertisement.Images.FirstOrDefault(x => x.Id == imageId));
             }
 
 
-            ttt.Title = MyAdvertisement.Title;
-            ttt.Description = MyAdvertisement.Description;
-            ttt.IsActive = MyAdvertisement.IsActive;
-            ttt.InnerCategoryId = MyAdvertisement.InnerCategoryId;
-            
-          
-            ttt.Id = MyAdvertisement.Id;
-            ttt.Images = MyAdvertisement.Images;
-            ttt.InnerCategory = MyAdvertisement.InnerCategory;
-            ttt.Local = MyAdvertisement.Local;
-            ttt.LocalId = MyAdvertisement.LocalId;
-            ttt.UpdatedDate = MyAdvertisement.UpdatedDate;
-            ttt.CreateDate = MyAdvertisement.CreateDate;
-            ttt.Description = MyAdvertisement.Description;
-
+            persistAdvertisement.Title = MyAdvertisement.Title;
+            persistAdvertisement.Description = MyAdvertisement.Description;
+            persistAdvertisement.IsActive = MyAdvertisement.IsActive;
+            persistAdvertisement.InnerCategoryId = MyAdvertisement.InnerCategoryId;
+            persistAdvertisement.Id = MyAdvertisement.Id;                        
+            persistAdvertisement.LocalId = MyAdvertisement.LocalId;
+            persistAdvertisement.UpdatedDate = DateTime.Now;            
+           
             // _context.Advertisements.Update(ttt);
             // _context.SaveChanges();
-            _advertismentService.Update(ttt);
+            await _advertismentService.Update(persistAdvertisement);
+            MyAdvertisement.Images= persistAdvertisement.Images;
 
-           
             var categories = _categoryService.GetAll().ToList();
             PopulateCategoryDropDownList(categories, null);
 
 
-            
-
+            return Page();
         }
         public void PopulateCategoryDropDownList(IList<Category> categories,
            List<long> selectedCategory)
@@ -120,6 +122,68 @@ namespace Advertises
                 Text = v.Title,
                 Value = v.Id.ToString()
             }).ToList();
+        }
+        public void PopulateCityDropDownList(IList<City> cities,
+          List<long> selectedCity)
+        {
+            var cityQuery = from d in cities
+                                orderby d.Name // Sort by name.
+                                select d;
+
+            ListCities = cityQuery.Select(v => new SelectListItem
+            {
+                Text = v.Name,
+                Value = v.Id.ToString()
+            }).ToList();
+        }
+
+        public void PopulateLocalDropDownList(IList<Local> locations,
+          List<long> selectedLocal)
+        {
+            var localQuery = from d in locations
+                            orderby d.Name // Sort by name.
+                            select d;
+
+            ListLocations = localQuery.Select(v => new SelectListItem
+            {
+                Text = v.Name,
+                Value = v.Id.ToString()
+            }).ToList();
+        }
+        public void PopulateInnerCategoryDropDownList(IList<InnerCategory> innerCategories,
+           List<long> selectedCategory)
+        {
+            var innerCategoryQuery = from d in innerCategories
+                                orderby d.Title // Sort by name.
+                                select d;
+
+            ListInnerCategories = innerCategoryQuery.Select(v => new SelectListItem
+            {
+                Text = v.Title,
+                Value = v.Id.ToString()
+            }).ToList();
+        }
+        public JsonResult OnGetChangeCity(long cityid)
+        {
+
+            var locations = _localService.GetAll()
+                .Where(x => x.CityId == cityid)
+                .ToList();
+
+
+            return new JsonResult(locations);
+
+        }
+        public JsonResult OnGetChangeCategory(long categoryid)
+        {
+
+            var innercattegory = _innerCategoryService.GetAll()
+                .Where(x => x.CategoryId == categoryid)
+                .ToList();
+
+
+            return new JsonResult(innercattegory);
+
         }
     }
 }

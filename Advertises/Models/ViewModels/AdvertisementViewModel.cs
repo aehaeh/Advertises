@@ -30,19 +30,19 @@ namespace Advertises.Models
         public bool IsActive
         { set; get; }
 
-
+        [Required(ErrorMessage = "لطفا شهر و محله خود را وارد نمائید ")]
         public Local Local
         { set; get; }
 
-        [Required(ErrorMessage = "لطفا شهر و محله خود را وارد نمائید ")]
+       
         public long LocalId
         { set; get; }
 
-
+        [Required(ErrorMessage = "لطفا دسته بندی مورد نظر را انتخاب کنید ")]
         public InnerCategory InnerCategory
         { set; get; }
 
-        [Required(ErrorMessage = "لطفا دسته بندی مورد نظر را انتخاب کنید ")]
+        
         public long InnerCategoryId
         { set; get; }
         public List<Image> Images { get; set; }

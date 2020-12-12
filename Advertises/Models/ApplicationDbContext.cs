@@ -32,10 +32,13 @@ namespace Advertises.Models
                 .WithOne(e => e.InnerCategory)
                 .HasForeignKey(e => e.InnerCategoryId);
 
+            modelBuilder.Entity<Category>().Property(x => x.Title).IsRequired();
+
             modelBuilder.Entity<Local>()
                 .HasMany(c => c.Advertisements)
                 .WithOne(e => e.Local)
-                .HasForeignKey(e => e.LocalId);
+                .HasForeignKey(e => e.LocalId)
+                .IsRequired();
 
             modelBuilder.Entity<Advertisement>()
                 .HasMany(c => c.Images)

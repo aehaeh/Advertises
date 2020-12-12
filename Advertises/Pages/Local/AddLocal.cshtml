@@ -13,7 +13,8 @@
 
             <div>
                 <input type="text" asp-for="MyLocal.Name" placeholder="" class="form-control" />
-                <<span asp-validation-for="MyLocal.Name"></span>
+                
+                <span asp-validation-for="MyLocal.Name"></span>
             </div>
             <div>
                 <select asp-items="Model.ListCities" asp-for="MyLocal.CityId" class="form-control"></select>

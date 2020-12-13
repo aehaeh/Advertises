@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 namespace Advertises
 {
@@ -28,42 +29,45 @@ namespace Advertises
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
             services.AddAuthentication(options =>
-            {
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie(options =>
-            {
-                options.LoginPath = new PathString("/Account/Login");
-                options.ExpireTimeSpan = TimeSpan.FromDays(10);
-            });
+                {
+                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                })
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new PathString("/Account/Login");
+                    options.ExpireTimeSpan = TimeSpan.FromDays(10);
+                });
 
-            services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllersWithViews();
-            services.AddMvc().AddRazorPagesOptions(options =>
-            {
-                /*options.Conventions.AuthorizeFolder("/Advertisements/");
-                options.Conventions.AuthorizeFolder("/Categories");
-                options.Conventions.AuthorizeFolder("/Cities");
-                options.Conventions.AuthorizeFolder("/Local");
-                options.Conventions.AllowAnonymousToFolder("/Account");
-                options.Conventions.AllowAnonymousToPage("/Index");*/
-            });
+
+            services.AddDbContext<ApplicationDbContext>(option =>
+                option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+            //services.AddControllersWithViews();
+            
+            services.AddMvc(options => options.EnableEndpointRouting = false)
+                .AddRazorPagesOptions(options =>
+                {
+                    /*options.Conventions.AuthorizeFolder("/Advertisements/");
+                    options.Conventions.AuthorizeFolder("/Categories");
+                    options.Conventions.AuthorizeFolder("/Cities");
+                    options.Conventions.AuthorizeFolder("/Local");
+                    options.Conventions.AllowAnonymousToFolder("/Account");
+                    options.Conventions.AllowAnonymousToPage("/Index");*/
+                })
+                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNameCaseInsensitive = false);
 
 
             services
-            .AddTransient<IAdvertismentService, AdvertismentService>()
-            .AddTransient<IBaseService<Category>, BaseService<Category>>()
-            .AddTransient<IBaseService<City>, BaseService<City>>()
-            .AddTransient<IBaseService<Local>, BaseService<Local>>()
-            .AddTransient<IBaseService<Role>, BaseService<Role>>()
-            .AddTransient<IBaseService<User>, BaseService<User>>()
-            .AddTransient<IBaseService<InnerCategory>, BaseService<InnerCategory>>();
-
-            
-
+                .AddTransient<IAdvertismentService, AdvertismentService>()
+                .AddTransient<IBaseService<Category>, BaseService<Category>>()
+                .AddTransient<IBaseService<City>, BaseService<City>>()
+                .AddTransient<IBaseService<Local>, BaseService<Local>>()
+                .AddTransient<IBaseService<Role>, BaseService<Role>>()
+                .AddTransient<IBaseService<User>, BaseService<User>>()
+                .AddTransient<IBaseService<InnerCategory>, BaseService<InnerCategory>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +84,7 @@ namespace Advertises
                 app.UseHsts();
             }
             //ADD ME
-           
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -89,10 +93,8 @@ namespace Advertises
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapRazorPages();
-            });
+            app.UseMvc();
+            app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Advertises.Api
        
        
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] string? inputModel)
+        public async Task<IActionResult> Create([FromBody] AdvertisementViewModel inputModel)
         {
             if (inputModel == null)
                 return BadRequest();

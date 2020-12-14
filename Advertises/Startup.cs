@@ -45,9 +45,9 @@ namespace Advertises
 
             services.AddDbContext<ApplicationDbContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+
             //services.AddControllersWithViews();
-            
+
             services.AddMvc(options => options.EnableEndpointRouting = false)
                 .ConfigureApiBehaviorOptions(options =>
                 {
@@ -65,9 +65,8 @@ namespace Advertises
                     options.Conventions.AllowAnonymousToFolder("/Account");
                     options.Conventions.AllowAnonymousToPage("/Index");*/
                 })
-                
                 .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNameCaseInsensitive = false);
-            
+            services.AddControllers().AddNewtonsoftJson();
             services
                 .AddTransient<IAdvertismentService, AdvertismentService>()
                 .AddTransient<IBaseService<Category>, BaseService<Category>>()

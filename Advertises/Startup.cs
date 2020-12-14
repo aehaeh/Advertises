@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,6 +49,13 @@ namespace Advertises
             //services.AddControllersWithViews();
             
             services.AddMvc(options => options.EnableEndpointRouting = false)
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options.SuppressConsumesConstraintForFormFileParameters = true;
+                    options.SuppressInferBindingSourcesForParameters = false;
+                    options.SuppressModelStateInvalidFilter = false;
+                    options.SuppressMapClientErrors = false;
+                })
                 .AddRazorPagesOptions(options =>
                 {
                     /*options.Conventions.AuthorizeFolder("/Advertisements/");
@@ -57,9 +65,9 @@ namespace Advertises
                     options.Conventions.AllowAnonymousToFolder("/Account");
                     options.Conventions.AllowAnonymousToPage("/Index");*/
                 })
+                
                 .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNameCaseInsensitive = false);
-
-
+            
             services
                 .AddTransient<IAdvertismentService, AdvertismentService>()
                 .AddTransient<IBaseService<Category>, BaseService<Category>>()

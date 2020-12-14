@@ -121,6 +121,10 @@
     <None Include="wwwroot\lib\bootstrap-rtl\js\bootstrap.min.js.map" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controlers\" />
+  </ItemGroup>
+
 
 
 </Project>

@@ -31,30 +31,42 @@ namespace Advertises.Api
             //return new string[] { "value1", "value2" };
             return _advertismentService.GetAll();
         }
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
+       
+       
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Create([FromBody] string? inputModel)
         {
+            if (inputModel == null)
+                return BadRequest();
+
+
+            Advertisement MyAdvertisement = new Advertisement();
+            MyAdvertisement.CreateDate = DateTime.Now;
+            MyAdvertisement.IsActive = false;
+
+            Advertisement persistAdvertisement = new Advertisement();
+
+            persistAdvertisement.Title = MyAdvertisement.Title;
+            persistAdvertisement.price = MyAdvertisement.price;
+            persistAdvertisement.Id = MyAdvertisement.Id;
+            persistAdvertisement.Images = MyAdvertisement.Images;
+            persistAdvertisement.InnerCategory = MyAdvertisement.InnerCategory;
+            persistAdvertisement.InnerCategoryId = MyAdvertisement.InnerCategoryId;
+            persistAdvertisement.IsActive = MyAdvertisement.IsActive;
+            persistAdvertisement.Local = MyAdvertisement.Local;
+            persistAdvertisement.LocalId = MyAdvertisement.LocalId;
+            persistAdvertisement.UpdatedDate = MyAdvertisement.UpdatedDate;
+            persistAdvertisement.CreateDate = MyAdvertisement.CreateDate;
+            persistAdvertisement.Description = MyAdvertisement.Description;
+
+           persistAdvertisement =await _advertismentService.Insert(persistAdvertisement);
+
+            return Ok(persistAdvertisement);
+
         }
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
 
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+
+
     }
 }

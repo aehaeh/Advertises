@@ -11,111 +11,109 @@
 
 </head>
 <body>
-    <header class="rtl">
+    <div>
 
-        <nav class=" navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3 " role="navigation">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Advertises</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class=" nav-pills navbar-nav flex-grow-1">
-                        <li class="  nav-item ">
-                            <a class="nav-link text-light active" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Account/Register">ثبت نام</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Account/Login">
-                                ورود
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Advertisements/addAdvertisement">
-                                ثبت آگهی
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Categories/Index">
-                                دسته بندی
+        <header class="rtl">
 
-                            </a>
-                        </li>
+            <nav class=" navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3 " role="navigation">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">Advertises</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class=" nav-pills navbar-nav flex-grow-1">
+                            <li class="  nav-item ">
+                                <a class="nav-link text-light active" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Privacy">Privacy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Account/Register">ثبت نام</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Account/Login">
+                                    ورود
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Advertisements/addAdvertisement">
+                                    ثبت آگهی
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Categories/Index">
+                                    دسته بندی
 
-
-                        <li class="dropdown mt-2">
-                            <a href="#" data-toggle="dropdown" class="text-light " aria-haspopup="true" aria-expanded="false" id="dropdownMenu2"> مدیریت <span class="caret"></span> </a>
-
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                                </a>
+                            </li>
 
 
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="Advertisements/Index">
-                                        مدیریت آگهی
+                            <li class="dropdown mt-2">
+                                <a href="#" data-toggle="dropdown" class="text-light " aria-haspopup="true" aria-expanded="false" id="dropdownMenu2"> مدیریت <span class="caret"></span> </a>
 
-                                    </a>
-                                </li>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
 
 
-                                <li class="dropdown-divider"></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="Advertisements/Index">
+                                            مدیریت آگهی
 
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="Cities/IndexCities">
-                                        مدیریت شهر
-
-                                    </a>
-                                </li>
-
-                                <li class="dropdown-divider"></li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="Local/IndexLocal">
-                                        مدیریت محله
-
-                                    </a>
-                                </li>
-
-                                <li class="dropdown-divider"></li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="InnerCategories/Index">
-                                        مدیریت دسته بندی داخلی
-
-                                    </a>
-                                </li>
+                                        </a>
+                                    </li>
 
 
-                                <li class="dropdown-divider"></li>
+                                    <li class="dropdown-divider"></li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="Cities/IndexCities">
+                                            مدیریت شهر
+
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown-divider"></li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="Local/IndexLocal">
+                                            مدیریت محله
+
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown-divider"></li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="InnerCategories/Index">
+                                            مدیریت دسته بندی داخلی
+
+                                        </a>
+                                    </li>
 
 
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="Roles/Index">
-                                        مدیریت دسترسی
-
-                                    </a>
-                                </li>
+                                    <li class="dropdown-divider"></li>
 
 
-                                <li class="dropdown-divider"></li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="Users/Index">
-                                        دسترسی کاربران
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="Roles/Index">
+                                            مدیریت دسترسی
 
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
+                                        </a>
+                                    </li>
 
 
+                                    <li class="dropdown-divider"></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="Users/Index">
+                                            دسترسی کاربران
 
+                                        </a>
+                                    </li>
 
+                                </ul>
+                            </li>
 
 
 
@@ -123,11 +121,18 @@
 
 
 
-                    </ul>
+
+
+
+
+                        </ul>
+
+                    </div>
+
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
+    </div>
     <div class="container-fluid ">
 
         @RenderBody()

@@ -17,9 +17,17 @@ namespace Advertises.Service
 
         public bool Delete(Advertisement advertisement)
         {
-            _context.Advertisements.Remove(advertisement);
-            var res = _context.SaveChanges();
-            return res == 0;
+            try
+            {
+                _context.Advertisements.Remove(advertisement);
+                var res = _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex) {
+                return false;
+            }
+            
+            
         }
 
         public Advertisement Get(long id)

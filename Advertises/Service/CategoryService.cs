@@ -22,9 +22,19 @@ namespace Advertises.Service
         }
         public bool Delete(Category category)
         {
+            //try
+            //{
+            //    _context.Categories.Remove(category);
+            //    var res = _context.SaveChanges();
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    return false;
+            //}
             _context.Categories.Remove(category);
-           var res= _context.SaveChanges();
-            return res ==0;
+            var res = _context.SaveChanges();
+            return res == 0;
         }
         public Category Get(long id)
         {

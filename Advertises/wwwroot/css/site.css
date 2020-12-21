@@ -1,8 +1,8 @@
 ﻿
 
-/*body {
-    direction: rtl;
-}*/
+body {
+    background-color: #f4f4f4;
+}
 
 #p1 {
     display: inline-table;
@@ -67,3 +67,6 @@
      height:40px;
 
  }
+.bgColor {
+    background-color: #f4f4f4;
+}
